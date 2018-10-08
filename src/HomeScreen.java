@@ -52,11 +52,11 @@ public class HomeScreen {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("SEARCH");
-		btnNewButton_1.setBounds(190, 168, 152, 42);
+		btnNewButton_1.setBounds(190, 167, 152, 42);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Logout");
-		btnNewButton_2.setBounds(395, 301, 89, 23);
+		btnNewButton_2.setBounds(403, 301, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
 	}
 }
