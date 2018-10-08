@@ -60,7 +60,7 @@ public class HomeScreen {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton_2.setBounds(396, 300, 89, 23);
+		btnNewButton_2.setBounds(388, 300, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
 	}
 }
