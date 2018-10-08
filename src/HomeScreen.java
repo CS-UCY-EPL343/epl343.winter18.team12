@@ -56,7 +56,11 @@ public class HomeScreen {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Logout");
-		btnNewButton_2.setBounds(403, 301, 89, 23);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton_2.setBounds(396, 300, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
 	}
 }
