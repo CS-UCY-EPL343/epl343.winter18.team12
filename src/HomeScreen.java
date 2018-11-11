@@ -7,10 +7,11 @@ import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class HomeScreen {
 
-	private JFrame frame;
+	private JFrame frmHomeScreen;
 
 	/**
 	 * Launch the application.
@@ -20,7 +21,7 @@ public class HomeScreen {
 			public void run() {
 				try {
 					HomeScreen window = new HomeScreen();
-					window.frame.setVisible(true);
+					window.frmHomeScreen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,28 +40,27 @@ public class HomeScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setForeground(Color.BLUE);
-		frame.setBounds(100, 100, 543, 403);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		JButton btnNewButton = new JButton("ADD");
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setBounds(190, 95, 152, 42);
-		frame.getContentPane().add(btnNewButton);
+		frmHomeScreen = new JFrame();
+		frmHomeScreen.setTitle("Home screen");
+		frmHomeScreen.getContentPane().setForeground(Color.BLUE);
+		frmHomeScreen.setBounds(100, 100, 543, 403);
+		frmHomeScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHomeScreen.getContentPane().setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("SEARCH");
 		btnNewButton_1.setBounds(190, 167, 152, 42);
-		frame.getContentPane().add(btnNewButton_1);
+		frmHomeScreen.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Logout");
+		JButton btnNewButton_2 = new JButton("LOGOUT");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		btnNewButton_2.setBounds(403, 301, 89, 23);
-		frame.getContentPane().add(btnNewButton_2);
+		frmHomeScreen.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton = new JButton("ADD PARTICIPANT");
+		btnNewButton.setBounds(190, 105, 152, 42);
+		frmHomeScreen.getContentPane().add(btnNewButton);
 	}
 }
