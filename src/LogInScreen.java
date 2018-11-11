@@ -13,7 +13,7 @@ import javax.swing.JPasswordField;
 //LOGIN,PARTICIPANTS,RESULT,FORMA
 public class LogInScreen {
 
-	private JFrame frame;
+	private JFrame frmLogin;
 	private JTextField textField;
 	private JPasswordField passwordField;
 
@@ -25,7 +25,7 @@ public class LogInScreen {
 			public void run() {
 				try {
 					LogInScreen window = new LogInScreen();
-					window.frame.setVisible(true);
+					window.frmLogin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -44,30 +44,31 @@ public class LogInScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmLogin = new JFrame();
+		frmLogin.setTitle("Login");
+		frmLogin.setBounds(100, 100, 450, 300);
+		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmLogin.getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setBounds(133, 57, 46, 13);
-		frame.getContentPane().add(lblUsername);
+		lblUsername.setBounds(133, 57, 75, 13);
+		frmLogin.getContentPane().add(lblUsername);
 		
 		textField = new JTextField();
 		textField.setBounds(248, 54, 113, 19);
-		frame.getContentPane().add(textField);
+		frmLogin.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(133, 131, 44, 13);
-		frame.getContentPane().add(lblPassword);
+		lblPassword.setBounds(133, 131, 75, 13);
+		frmLogin.getContentPane().add(lblPassword);
 		
 		JButton btnLogIn = new JButton("Log In");
-		btnLogIn.setBounds(166, 221, 61, 21);
-		frame.getContentPane().add(btnLogIn);
+		btnLogIn.setBounds(166, 221, 88, 21);
+		frmLogin.getContentPane().add(btnLogIn);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(248, 128, 113, 19);
-		frame.getContentPane().add(passwordField);
+		frmLogin.getContentPane().add(passwordField);
 	}
 }
