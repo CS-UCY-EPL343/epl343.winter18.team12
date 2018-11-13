@@ -26,7 +26,7 @@ import javax.swing.JMenu;
 import java.awt.event.ActionEvent;
 
 public class Participant {
-
+	static Participant window = new Participant();
 	private JFrame frmParticipant;
 
 	/**
@@ -36,7 +36,7 @@ public class Participant {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Participant window = new Participant();
+					
 					window.frmParticipant.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -100,6 +100,12 @@ public class Participant {
 		frmParticipant.getContentPane().add(btnDeleteParticipant);
 		
 		JButton btnInsetNewForm = new JButton("Insert new Form");
+		btnInsetNewForm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FormA.main(new String[1]);
+
+			}
+		});
 		btnInsetNewForm.setBounds(304, 228, 145, 21);
 		frmParticipant.getContentPane().add(btnInsetNewForm);
 		rdbtnNewRadioButton.setBounds(61, 141, 109, 23);
