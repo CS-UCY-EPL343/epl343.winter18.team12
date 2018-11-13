@@ -24,10 +24,19 @@ import javax.swing.JTextPane;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class Participant {
 	static Participant window = new Participant();
 	private JFrame frmParticipant;
+	private JTextField txtName;
+	private JTextField txtSurname;
+	private JTextField txtDate;
+	private JTextField txtTelephoneno;
+	private JTextField txtExampeexamplecom;
 
 	/**
 	 * Launch the application.
@@ -47,6 +56,7 @@ public class Participant {
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public Participant() {
 		initialize();
@@ -58,45 +68,22 @@ public class Participant {
 	private void initialize() {
 		frmParticipant = new JFrame();
 		frmParticipant.setTitle("Participant");
-		frmParticipant.setBounds(100, 100, 653, 445);
+		frmParticipant.setBounds(100, 100, 652, 474);
 		frmParticipant.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmParticipant.getContentPane().setLayout(null);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Smoker");
+		rdbtnNewRadioButton.setEnabled(false);
 		rdbtnNewRadioButton.setVerticalAlignment(SwingConstants.TOP);
-		rdbtnNewRadioButton.setBounds(62, 170, 109, 23);
+		rdbtnNewRadioButton.setBounds(120, 147, 109, 23);
 		frmParticipant.getContentPane().add(rdbtnNewRadioButton);
 		
-		JLabel lblPartname = new JLabel("Part_name");
-		lblPartname.setBounds(159, 26, 76, 13);
-		frmParticipant.getContentPane().add(lblPartname);
-		
-		JLabel label = new JLabel("Part_name");
-		label.setBounds(159, 50, 76, 13);
-		frmParticipant.getContentPane().add(label);
-		
-		JLabel lblNewLabel = new JLabel("Part_Date");
-		lblNewLabel.setBounds(159, 76, 76, 13);
-		frmParticipant.getContentPane().add(lblNewLabel);
-		
-		JLabel lblParttel = new JLabel("Part_Tel");
-		lblParttel.setBounds(159, 99, 69, 13);
-		frmParticipant.getContentPane().add(lblParttel);
-		
-		JLabel lblPartemail = new JLabel("Part_email");
-		lblPartemail.setBounds(159, 122, 69, 13);
-		frmParticipant.getContentPane().add(lblPartemail);
-		
-		JLabel lblFormsCompleted = new JLabel("Forms completed");
-		lblFormsCompleted.setBounds(62, 204, 109, 13);
-		frmParticipant.getContentPane().add(lblFormsCompleted);
-		
 		JButton btnEditForm = new JButton("Edit form");
-		btnEditForm.setBounds(62, 271, 85, 21);
+		btnEditForm.setBounds(61, 370, 85, 21);
 		frmParticipant.getContentPane().add(btnEditForm);
 		
 		JButton btnDeleteParticipant = new JButton("Delete Participant");
-		btnDeleteParticipant.setBounds(463, 34, 145, 21);
+		btnDeleteParticipant.setBounds(459, 228, 145, 21);
 		frmParticipant.getContentPane().add(btnDeleteParticipant);
 		
 		JButton btnInsetNewForm = new JButton("Insert new Form");
@@ -124,31 +111,144 @@ public class Participant {
 		frmParticipant.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("Surname:");
-		label_4.setBounds(61, 49, 69, 14);
+		label_4.setBounds(304, 50, 69, 14);
 		frmParticipant.getContentPane().add(label_4);
 		
 		JLabel label_5 = new JLabel("Name:");
-		label_5.setBounds(61, 25, 69, 14);
+		label_5.setBounds(61, 50, 69, 14);
 		frmParticipant.getContentPane().add(label_5);
 		
-		JLabel lblParticipantDetails = new JLabel("Participant Details");
-		lblParticipantDetails.setBounds(258, 11, 109, 23);
-		frmParticipant.getContentPane().add(lblParticipantDetails);
+		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtName.setEnabled(false);
+				txtSurname.setEnabled(false);
+				txtDate.setEnabled(false);
+				txtTelephoneno.setEnabled(false);
+				txtExampeexamplecom.setEnabled(false);
+				btnSave.setEnabled(false);
+				rdbtnNewRadioButton.setEnabled(false);
+			}
+		});
+		btnSave.setEnabled(false);
+		btnSave.setBounds(430, 117, 89, 23);
+		frmParticipant.getContentPane().add(btnSave);
 		
 		JButton btnModify = new JButton("Modify");
-		btnModify.setBounds(240, 140, 89, 23);
+		btnModify.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtName.setEnabled(true);
+				txtSurname.setEnabled(true);
+				txtDate.setEnabled(true);
+				txtTelephoneno.setEnabled(true);
+				txtExampeexamplecom.setEnabled(true);
+				btnSave.setEnabled(true);
+				rdbtnNewRadioButton.setEnabled(true);
+				
+			}
+		});
+		btnModify.setBounds(331, 117, 89, 23);
 		frmParticipant.getContentPane().add(btnModify);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(39, 266, 178, 93);
+		frmParticipant.getContentPane().add(scrollPane);
+		
+		JList list = new JList();
+		scrollPane.setViewportView(list);
 		
 		String[] formStrings={"Choose Form...", "Form A", "Form B", "Form C", "Form D"};
 		JComboBox comboBox1 = new JComboBox(formStrings);
 		comboBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String form=(String)comboBox1.getSelectedItem();
+			String stringArray[]=new String[6];
+			switch(form) {
+			case "Form A": 
+				for(int i=0;i<stringArray.length;i++) {
+					stringArray[i]="FormA-"+i;
+				}
+				list.setListData(stringArray);
+				break;
+			
+			case "Form B": 
+				for(int i=0;i<stringArray.length-2;i++) {
+					stringArray[i]="FormB-"+i;
+				}
+				list.setListData(stringArray);
+				break;
+				
+			case "Form C": 
+				for(int i=0;i<stringArray.length-1;i++) {
+					stringArray[i]="FormC-"+i;
+				}
+				list.setListData(stringArray);
+				break;
+			
+			case "Form D": 
+				for(int i=0;i<stringArray.length;i++) {
+					stringArray[i]="FormD-"+i;
+				}
+				list.setListData(stringArray);
+				break;
+			}
 			}
 		});
 		
-		comboBox1.setBounds(61, 227, 132, 23);
+		comboBox1.setBounds(39, 227, 132, 23);
 		frmParticipant.getContentPane().add(comboBox1);
+		
+		txtName = new JTextField();
+		txtName.setEnabled(false);
+		txtName.setText("Name...");
+		txtName.setBounds(159, 47, 124, 20);
+		frmParticipant.getContentPane().add(txtName);
+		txtName.setColumns(10);
+		
+		txtSurname = new JTextField();
+		txtSurname.setEnabled(false);
+		txtSurname.setText("Surname");
+		txtSurname.setColumns(10);
+		txtSurname.setBounds(369, 47, 124, 20);
+		frmParticipant.getContentPane().add(txtSurname);
+		
+		txtDate = new JTextField();
+		txtDate.setEnabled(false);
+		txtDate.setText("Date...");
+		txtDate.setColumns(10);
+		txtDate.setBounds(159, 72, 124, 20);
+		frmParticipant.getContentPane().add(txtDate);
+		
+		txtTelephoneno = new JTextField();
+		txtTelephoneno.setEnabled(false);
+		txtTelephoneno.setText("TelephoneNo...");
+		txtTelephoneno.setColumns(10);
+		txtTelephoneno.setBounds(159, 95, 124, 20);
+		frmParticipant.getContentPane().add(txtTelephoneno);
+		
+		txtExampeexamplecom = new JTextField();
+		txtExampeexamplecom.setEnabled(false);
+		txtExampeexamplecom.setText("exampe@example.com");
+		txtExampeexamplecom.setColumns(10);
+		txtExampeexamplecom.setBounds(159, 118, 124, 20);
+		frmParticipant.getContentPane().add(txtExampeexamplecom);
+		
+		JLabel lblParticipantDetails = new JLabel("Participant Details");
+		lblParticipantDetails.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblParticipantDetails.setBounds(10, 6, 194, 32);
+		frmParticipant.getContentPane().add(lblParticipantDetails);
+		
+		JLabel lblFormsCompleted = new JLabel("Forms Completed");
+		lblFormsCompleted.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblFormsCompleted.setBounds(10, 184, 194, 32);
+		frmParticipant.getContentPane().add(lblFormsCompleted);
+		
+		
+		
+		
+		
+
 		
 	
 		

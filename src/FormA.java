@@ -28,6 +28,7 @@ public class FormA {
 				try {
 					FormA window = new FormA();
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,7 +49,7 @@ public class FormA {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 521, 361);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblQuestion = new JLabel("Question1");

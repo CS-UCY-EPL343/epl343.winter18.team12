@@ -33,6 +33,7 @@ public class ResultScreen {
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public ResultScreen() {
 		initialize();

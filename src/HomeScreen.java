@@ -10,7 +10,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class HomeScreen {
-
+	static HomeScreen window = new HomeScreen();
 	private JFrame frmHomeScreen;
 
 	/**
@@ -20,7 +20,7 @@ public class HomeScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HomeScreen window = new HomeScreen();
+					
 					window.frmHomeScreen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,6 +31,7 @@ public class HomeScreen {
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public HomeScreen() {
 		initialize();
@@ -48,18 +49,35 @@ public class HomeScreen {
 		frmHomeScreen.getContentPane().setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("SEARCH");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				window.frmHomeScreen.hide();
+				Search_Screen.main(null);
+			}
+		});
 		btnNewButton_1.setBounds(190, 167, 152, 42);
 		frmHomeScreen.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("LOGOUT");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				window.frmHomeScreen.hide();
+				LogInScreen.window.frmLogin.show();
+				
+
+				
 			}
 		});
 		btnNewButton_2.setBounds(403, 301, 89, 23);
 		frmHomeScreen.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton = new JButton("ADD PARTICIPANT");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				window.frmHomeScreen.hide();
+				Participant.main(null);
+			}
+		});
 		btnNewButton.setBounds(190, 105, 152, 42);
 		frmHomeScreen.getContentPane().add(btnNewButton);
 	}
