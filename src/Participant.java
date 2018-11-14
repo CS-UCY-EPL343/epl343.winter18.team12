@@ -32,6 +32,7 @@ import javax.swing.ListSelectionModel;
 
 public class Participant {
 	static Participant window = new Participant();
+	static JLabel label_4;
 	private JFrame frmParticipant;
 	private JTextField txtName;
 	private JTextField txtSurname;
@@ -115,7 +116,7 @@ public class Participant {
 		label_3.setBounds(61, 75, 86, 14);
 		frmParticipant.getContentPane().add(label_3);
 		
-		JLabel label_4 = new JLabel("Surname:");
+		label_4 = new JLabel("Surname:");
 		label_4.setBounds(304, 50, 69, 14);
 		frmParticipant.getContentPane().add(label_4);
 		
