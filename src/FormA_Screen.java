@@ -7,6 +7,8 @@ import java.awt.Font;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 
 public class FormA_Screen {
@@ -18,7 +20,7 @@ public class FormA_Screen {
 	private final ButtonGroup buttonGroup_3 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_4 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
-
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	/**
 	 * Launch the application.
 	 */
@@ -236,6 +238,14 @@ public class FormA_Screen {
 		});
 		btnModify.setBounds(38, 254, 89, 23);
 		frame.getContentPane().add(btnModify);
+		
+		JLabel lblDate = new JLabel("Date:");
+		lblDate.setBounds(343, 23, 41, 14);
+		frame.getContentPane().add(lblDate);
+		LocalDate localDate = LocalDate.now();
+		JLabel lblprDate = new JLabel(dtf.format(localDate));
+		lblprDate.setBounds(393, 23, 88, 14);
+		frame.getContentPane().add(lblprDate);
 		
 	}
 }
