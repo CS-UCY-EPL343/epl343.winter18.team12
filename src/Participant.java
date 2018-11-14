@@ -199,6 +199,11 @@ public class Participant {
 		});
 		btnSave.setEnabled(false);
 		btnSave.setBounds(430, 117, 89, 23);
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		frmParticipant.getContentPane().add(btnSave);
 		
 		JButton btnModify = new JButton("Modify");
