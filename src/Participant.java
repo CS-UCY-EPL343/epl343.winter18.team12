@@ -28,6 +28,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.ListSelectionModel;
 
 public class Participant {
 	static Participant window = new Participant();
@@ -156,6 +157,7 @@ public class Participant {
 		frmParticipant.getContentPane().add(scrollPane);
 		
 		JList list = new JList();
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
 		
 		String[] formStrings={"Choose Form...", "Form A", "Form B", "Form C", "Form D"};
