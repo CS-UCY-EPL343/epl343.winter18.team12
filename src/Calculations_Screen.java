@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import java.awt.Color;
 
-public class Calculations extends JFrame {
+public class Calculations_Screen extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -30,7 +30,7 @@ public class Calculations extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Calculations frame = new Calculations();
+					Calculations_Screen frame = new Calculations_Screen();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class Calculations extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Calculations() {
+	public Calculations_Screen() {
 		setTitle("Calculate average and standard deviation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 571, 425);

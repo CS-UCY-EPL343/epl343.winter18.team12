@@ -30,8 +30,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ListSelectionModel;
 
-public class Participant {
-	static Participant window = new Participant();
+public class Participant_Screen {
+	static Participant_Screen window = new Participant_Screen();
 	static JLabel label_4;
 	private JFrame frmParticipant;
 	private JTextField txtName;
@@ -60,7 +60,7 @@ public class Participant {
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public Participant() {
+	public Participant_Screen() {
 		initialize();
 	}
 

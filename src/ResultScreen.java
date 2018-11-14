@@ -87,7 +87,7 @@ public class ResultScreen {
 			public void actionPerformed(ActionEvent e) {
 				window.frame.setVisible(false);
 				LogInScreen.state=1;
-				Participant.main(array);
+				Participant_Screen.main(array);
 				
 			}
 		});

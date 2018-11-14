@@ -76,7 +76,7 @@ public class HomeScreen {
 			public void actionPerformed(ActionEvent e) {
 				window.frmHomeScreen.hide();
 				LogInScreen.state=0;
-				Participant.main(null);
+				Participant_Screen.main(null);
 				
 			}
 		});
