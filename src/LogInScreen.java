@@ -78,8 +78,10 @@ public class LogInScreen {
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textField.getText().equals("User")&&passwordField.getText().equals("Admin")) {
-				
+					
 					HomeScreen.main(null);
+					window.frmLogin.hide();
+					initialize();
 					window.frmLogin.hide();
 					
 

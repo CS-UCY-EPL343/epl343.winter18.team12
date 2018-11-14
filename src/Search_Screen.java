@@ -7,6 +7,8 @@ import javax.swing.AbstractListModel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Search_Screen {
 
@@ -113,5 +115,15 @@ public class Search_Screen {
 		});
 		list_2.setEnabled(false);
 		scrollPane_2.setViewportView(list_2);
+		
+		JButton btnHome = new JButton("Home <-");
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmSearch.setVisible(false);
+				HomeScreen.main(null);
+			}
+		});
+		btnHome.setBounds(10, 227, 89, 23);
+		frmSearch.getContentPane().add(btnHome);
 	}
 }
