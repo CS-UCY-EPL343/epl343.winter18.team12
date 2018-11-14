@@ -21,6 +21,11 @@ public class LogInScreen {
 	public JFrame frmLogin;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private boolean admin=false;
+	private String admin_pass="Admin";
+	private String user_pass="User";
+	private String admin_username="Admin";
+	private String user_username="User";
 
 	/**
 	 * Launch the application.
@@ -50,6 +55,9 @@ public class LogInScreen {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	public boolean is_admin(){
+		return admin;
+	}
 	private void initialize() {
 //		char pass[]=new char[5];
 //		pass[0]='A';
@@ -79,14 +87,17 @@ public class LogInScreen {
 		JButton btnLogIn = new JButton("Log In");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textField.getText().equals("User")&&passwordField.getText().equals("Admin")) {
-					
+				if(textField.getText().equals(admin_username)&&passwordField.getText().equals(admin_pass)) {
+					admin=true;
 					HomeScreen.main(null);
 					window.frmLogin.hide();
 					initialize();
 					window.frmLogin.hide();
-					
-
+				}else if (textField.getText().equals(user_username)&&passwordField.getText().equals(user_pass)){	
+					HomeScreen.main(null);
+					window.frmLogin.hide();
+					initialize();
+					window.frmLogin.hide();
 				}else {
 					JOptionPane.showMessageDialog(null, "Wrong Credentials");
 				}
