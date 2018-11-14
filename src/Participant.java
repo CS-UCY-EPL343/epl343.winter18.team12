@@ -244,6 +244,17 @@ public class Participant {
 		lblFormsCompleted.setBounds(10, 184, 194, 32);
 		frmParticipant.getContentPane().add(lblFormsCompleted);
 		
+		JButton button = new JButton("Home <-");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmParticipant.setVisible(false);
+				initialize();
+				HomeScreen.main(null);
+			}
+		});
+		button.setBounds(10, 401, 89, 23);
+		frmParticipant.getContentPane().add(button);
+		
 		
 		
 		
