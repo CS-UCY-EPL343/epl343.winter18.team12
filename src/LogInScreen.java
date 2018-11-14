@@ -14,7 +14,9 @@ import java.awt.Insets;
 import javax.swing.JPasswordField;
 import java.awt.Font;
 //LOGIN,PARTICIPANTS,RESULT,FORMA
+
 public class LogInScreen {
+	static int state=0;
 	static LogInScreen window = new LogInScreen();
 	public JFrame frmLogin;
 	private JTextField textField;
