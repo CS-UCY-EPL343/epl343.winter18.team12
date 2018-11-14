@@ -9,6 +9,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.ListSelectionModel;
 
 public class Search_Screen {
 
@@ -62,8 +65,52 @@ public class Search_Screen {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(160, 33, 106, 133);
 		frmSearch.getContentPane().add(scrollPane);
+		JList list_1 = new JList();
+		list_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list_1.setModel(new AbstractListModel() {
+			String[] values = new String[] {"Attribute1", "Attribute2", "Attribute3", "Attribute4", "Attribute5", "Attribute6", "Attribute7", "Attribute8", "Attribute9", "Attribute10", "Attribute11"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		
 		
 		JList list = new JList();
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				String values[]=new String[6];
+				switch((String)list.getSelectedValue()) {
+				case "Form1": 
+					for(int i=0;i<values.length;i++) {
+						values[i]="Form1-"+i;
+					}
+					break;
+				
+				case "Form2": 
+					for(int i=0;i<values.length-2;i++) {
+						values[i]="Form2-"+i;
+					}
+					break;
+					
+				case "Form3": 
+					for(int i=0;i<values.length-1;i++) {
+						values[i]="Form3-"+i;
+					}
+					break;
+				
+				case "Form4": 
+					for(int i=0;i<values.length;i++) {
+						values[i]="Form4-"+i;
+					}
+					break;
+				}
+				list_1.setListData(values);
+			}
+		});
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Form1", "Form2", "Form3", "Form4", "Form5", "Form6", "Form7", "Form8", "Form9", "Form10"};
@@ -79,29 +126,8 @@ public class Search_Screen {
 		scrollPane_1.setBounds(285, 33, 129, 133);
 		frmSearch.getContentPane().add(scrollPane_1);
 		
-		JList list_1 = new JList();
-		list_1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Attribute1", "Attribute2", "Attribute3", "Attribute4", "Attribute5", "Attribute6", "Attribute7", "Attribute8", "Attribute9", "Attribute10", "Attribute11"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+
 		scrollPane_1.setViewportView(list_1);
-		
-		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(329, 176, 85, 21);
-		frmSearch.getContentPane().add(btnAdd);
-		
-		JButton btnSearch = new JButton("Search");
-		btnSearch.setBounds(10, 182, 85, 21);
-		frmSearch.getContentPane().add(btnSearch);
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(10, 33, 106, 139);
-		frmSearch.getContentPane().add(scrollPane_2);
 		
 		JList list_2 = new JList();
 		list_2.setModel(new AbstractListModel() {
@@ -113,6 +139,27 @@ public class Search_Screen {
 				return values[index];
 			}
 		});
+		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String tmp=(String)list_1.getSelectedValue();
+				if(tmp==null)
+					System.out.println(""); //todo
+				else{
+				}
+			}
+		});
+		btnAdd.setBounds(329, 176, 85, 21);
+		frmSearch.getContentPane().add(btnAdd);
+		
+		JButton btnSearch = new JButton("Search");
+		btnSearch.setBounds(10, 182, 85, 21);
+		frmSearch.getContentPane().add(btnSearch);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(10, 33, 106, 139);
+		frmSearch.getContentPane().add(scrollPane_2);
+		
 		list_2.setEnabled(false);
 		scrollPane_2.setViewportView(list_2);
 		
