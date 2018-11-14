@@ -11,8 +11,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-public class ResultScreen {
-	static ResultScreen window = new ResultScreen();
+public class Result_Screen {
+	static Result_Screen window = new Result_Screen();
 	private JFrame frame;
 
 	/**
@@ -35,7 +35,7 @@ public class ResultScreen {
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public ResultScreen() {
+	public Result_Screen() {
 		initialize();
 	}
 
@@ -86,7 +86,7 @@ public class ResultScreen {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				window.frame.setVisible(false);
-				LogInScreen.state=1;
+				LogIn_Screen.state=1;
 				Participant_Screen.main(array);
 				
 			}

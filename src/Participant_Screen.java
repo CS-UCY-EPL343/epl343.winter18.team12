@@ -39,6 +39,7 @@ public class Participant_Screen {
 	private JTextField txtDate;
 	private JTextField txtTelephoneno;
 	private JTextField txtExampeexamplecom;
+	private JTextField txtId;
 
 	/**
 	 * Launch the application.
@@ -77,25 +78,25 @@ public class Participant_Screen {
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Smoker");
 		rdbtnNewRadioButton.setEnabled(false);
 		rdbtnNewRadioButton.setVerticalAlignment(SwingConstants.TOP);
-		rdbtnNewRadioButton.setBounds(120, 147, 109, 23);
+		rdbtnNewRadioButton.setBounds(62, 161, 109, 23);
 		frmParticipant.getContentPane().add(rdbtnNewRadioButton);
 		
 		JButton btnEditForm = new JButton("Edit form");
-		System.out.println("PartState:"+LogInScreen.state);
-		if(LogInScreen.state==0)btnEditForm.setEnabled(false);
+		//System.out.println("PartState:"+LogInScreen.state);
+		if(LogIn_Screen.state==0)btnEditForm.setEnabled(false);
 		btnEditForm.setBounds(61, 370, 85, 21);
 		frmParticipant.getContentPane().add(btnEditForm);
 		
 		JButton btnDeleteParticipant = new JButton("Delete Participant");
-		if(LogInScreen.state==0)btnDeleteParticipant.setEnabled(false);
+		if(LogIn_Screen.state==0)btnDeleteParticipant.setEnabled(false);
 		btnDeleteParticipant.setBounds(459, 228, 145, 21);
 		frmParticipant.getContentPane().add(btnDeleteParticipant);
 		
 		JButton btnInsetNewForm = new JButton("Insert new Form");
-		if(LogInScreen.state==0)btnInsetNewForm.setEnabled(false);
+		if(LogIn_Screen.state==0)btnInsetNewForm.setEnabled(false);
 		btnInsetNewForm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FormA.main(new String[1]);
+				FormA_Screen.main(new String[1]);
 
 			}
 		});
@@ -125,19 +126,19 @@ public class Participant_Screen {
 		frmParticipant.getContentPane().add(label_5);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		if(LogInScreen.state==0)scrollPane.setEnabled(false);
+		if(LogIn_Screen.state==0)scrollPane.setEnabled(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(39, 266, 178, 93);
 		frmParticipant.getContentPane().add(scrollPane);
 		
 		JList list = new JList();
-		if(LogInScreen.state==0)list.setEnabled(false);
+		if(LogIn_Screen.state==0)list.setEnabled(false);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
 		
 		String[] formStrings={"Choose Form...", "Form A", "Form B", "Form C", "Form D"};
 		JComboBox comboBox1 = new JComboBox(formStrings);
-		if(LogInScreen.state==0)comboBox1.setEnabled(false);
+		if(LogIn_Screen.state==0)comboBox1.setEnabled(false);
 		comboBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String form=(String)comboBox1.getSelectedItem();
@@ -185,6 +186,7 @@ public class Participant_Screen {
 				txtDate.setEnabled(false);
 				txtTelephoneno.setEnabled(false);
 				txtExampeexamplecom.setEnabled(false);
+				txtId.setEnabled(false);
 				btnSave.setEnabled(false);
 				rdbtnNewRadioButton.setEnabled(false);
 				//FORM
@@ -194,7 +196,7 @@ public class Participant_Screen {
 				list.setEnabled(true);
 				scrollPane.setEnabled(true);
 				comboBox1.setEnabled(true);
-				
+				Participant part= new Participant(txtName.getName(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
 			}
 		});
 		btnSave.setEnabled(false);
@@ -214,6 +216,7 @@ public class Participant_Screen {
 				txtDate.setEnabled(true);
 				txtTelephoneno.setEnabled(true);
 				txtExampeexamplecom.setEnabled(true);
+				txtId.setEnabled(true);
 				btnSave.setEnabled(true);
 				rdbtnNewRadioButton.setEnabled(true);
 				
@@ -280,6 +283,17 @@ public class Participant_Screen {
 		});
 		button.setBounds(10, 401, 89, 23);
 		frmParticipant.getContentPane().add(button);
+		
+		JLabel lblId = new JLabel("ID:");
+		lblId.setBounds(304, 75, 46, 14);
+		frmParticipant.getContentPane().add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setText("ID");
+		txtId.setEnabled(false);
+		txtId.setBounds(369, 72, 124, 20);
+		frmParticipant.getContentPane().add(txtId);
+		txtId.setColumns(10);
 		
 		
 		

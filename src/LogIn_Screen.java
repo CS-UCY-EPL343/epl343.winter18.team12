@@ -15,17 +15,17 @@ import javax.swing.JPasswordField;
 import java.awt.Font;
 //LOGIN,PARTICIPANTS,RESULT,FORMA
 
-public class LogInScreen {
+public class LogIn_Screen {
 	static int state=0;
-	static LogInScreen window = new LogInScreen();
+	static LogIn_Screen window = new LogIn_Screen();
 	public JFrame frmLogin;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private boolean admin=false;
-	private String admin_pass="Admin";
-	private String user_pass="User";
-	private String admin_username="Admin";
-	private String user_username="User";
+	private static boolean admin=false;
+	private static String admin_pass="Admin";
+	private static String user_pass="User";
+	private static String admin_username="Admin";
+	private static String user_username="User";
 
 	/**
 	 * Launch the application.
@@ -48,14 +48,14 @@ public class LogInScreen {
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public LogInScreen() {
+	public LogIn_Screen() {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	public boolean is_admin(){
+	public static boolean is_admin(){
 		return admin;
 	}
 	private void initialize() {

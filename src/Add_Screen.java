@@ -8,7 +8,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class AddScreen {
+public class Add_Screen {
 
 	private JFrame frmAddNewParticipant;
 	private JTextField textField;
@@ -24,7 +24,7 @@ public class AddScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddScreen window = new AddScreen();
+					Add_Screen window = new Add_Screen();
 					window.frmAddNewParticipant.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class AddScreen {
 	/**
 	 * Create the application.
 	 */
-	public AddScreen() {
+	public Add_Screen() {
 		initialize();
 	}
 

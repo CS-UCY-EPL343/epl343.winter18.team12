@@ -62,7 +62,7 @@ public class HomeScreen {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				window.frmHomeScreen.hide();
-				LogInScreen.window.frmLogin.show();
+				LogIn_Screen.window.frmLogin.show();
 				
 
 				
@@ -75,7 +75,7 @@ public class HomeScreen {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				window.frmHomeScreen.hide();
-				LogInScreen.state=0;
+				LogIn_Screen.state=0;
 				Participant_Screen.main(null);
 				
 			}

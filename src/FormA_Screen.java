@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FormA {
+public class FormA_Screen {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -26,7 +26,7 @@ public class FormA {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormA window = new FormA();
+					FormA_Screen window = new FormA_Screen();
 					window.frame.setVisible(true);
 					
 				} catch (Exception e) {
@@ -39,7 +39,7 @@ public class FormA {
 	/**
 	 * Create the application.
 	 */
-	public FormA() {
+	public FormA_Screen() {
 		initialize();
 	}
 
