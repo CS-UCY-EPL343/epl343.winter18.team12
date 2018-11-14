@@ -75,7 +75,9 @@ public class HomeScreen {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				window.frmHomeScreen.hide();
+				LogInScreen.state=0;
 				Participant.main(null);
+				
 			}
 		});
 		btnNewButton.setBounds(190, 105, 152, 42);

@@ -80,14 +80,18 @@ public class Participant {
 		frmParticipant.getContentPane().add(rdbtnNewRadioButton);
 		
 		JButton btnEditForm = new JButton("Edit form");
+		System.out.println("PartState:"+LogInScreen.state);
+		if(LogInScreen.state==0)btnEditForm.setEnabled(false);
 		btnEditForm.setBounds(61, 370, 85, 21);
 		frmParticipant.getContentPane().add(btnEditForm);
 		
 		JButton btnDeleteParticipant = new JButton("Delete Participant");
+		if(LogInScreen.state==0)btnDeleteParticipant.setEnabled(false);
 		btnDeleteParticipant.setBounds(459, 228, 145, 21);
 		frmParticipant.getContentPane().add(btnDeleteParticipant);
 		
 		JButton btnInsetNewForm = new JButton("Insert new Form");
+		if(LogInScreen.state==0)btnInsetNewForm.setEnabled(false);
 		btnInsetNewForm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FormA.main(new String[1]);
@@ -119,49 +123,20 @@ public class Participant {
 		label_5.setBounds(61, 50, 69, 14);
 		frmParticipant.getContentPane().add(label_5);
 		
-		JButton btnSave = new JButton("Save");
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				txtName.setEnabled(false);
-				txtSurname.setEnabled(false);
-				txtDate.setEnabled(false);
-				txtTelephoneno.setEnabled(false);
-				txtExampeexamplecom.setEnabled(false);
-				btnSave.setEnabled(false);
-				rdbtnNewRadioButton.setEnabled(false);
-			}
-		});
-		btnSave.setEnabled(false);
-		btnSave.setBounds(430, 117, 89, 23);
-		frmParticipant.getContentPane().add(btnSave);
-		
-		JButton btnModify = new JButton("Modify");
-		btnModify.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				txtName.setEnabled(true);
-				txtSurname.setEnabled(true);
-				txtDate.setEnabled(true);
-				txtTelephoneno.setEnabled(true);
-				txtExampeexamplecom.setEnabled(true);
-				btnSave.setEnabled(true);
-				rdbtnNewRadioButton.setEnabled(true);
-				
-			}
-		});
-		btnModify.setBounds(331, 117, 89, 23);
-		frmParticipant.getContentPane().add(btnModify);
-		
 		JScrollPane scrollPane = new JScrollPane();
+		if(LogInScreen.state==0)scrollPane.setEnabled(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(39, 266, 178, 93);
 		frmParticipant.getContentPane().add(scrollPane);
 		
 		JList list = new JList();
+		if(LogInScreen.state==0)list.setEnabled(false);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
 		
 		String[] formStrings={"Choose Form...", "Form A", "Form B", "Form C", "Form D"};
 		JComboBox comboBox1 = new JComboBox(formStrings);
+		if(LogInScreen.state==0)comboBox1.setEnabled(false);
 		comboBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String form=(String)comboBox1.getSelectedItem();
@@ -200,6 +175,49 @@ public class Participant {
 		
 		comboBox1.setBounds(39, 227, 132, 23);
 		frmParticipant.getContentPane().add(comboBox1);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtName.setEnabled(false);
+				txtSurname.setEnabled(false);
+				txtDate.setEnabled(false);
+				txtTelephoneno.setEnabled(false);
+				txtExampeexamplecom.setEnabled(false);
+				btnSave.setEnabled(false);
+				rdbtnNewRadioButton.setEnabled(false);
+				//FORM
+				btnEditForm.setEnabled(true);
+				btnDeleteParticipant.setEnabled(true);
+				btnInsetNewForm.setEnabled(true);
+				list.setEnabled(true);
+				scrollPane.setEnabled(true);
+				comboBox1.setEnabled(true);
+				
+			}
+		});
+		btnSave.setEnabled(false);
+		btnSave.setBounds(430, 117, 89, 23);
+		frmParticipant.getContentPane().add(btnSave);
+		
+		JButton btnModify = new JButton("Modify");
+		btnModify.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtName.setEnabled(true);
+				txtSurname.setEnabled(true);
+				txtDate.setEnabled(true);
+				txtTelephoneno.setEnabled(true);
+				txtExampeexamplecom.setEnabled(true);
+				btnSave.setEnabled(true);
+				rdbtnNewRadioButton.setEnabled(true);
+				
+				
+			}
+		});
+		btnModify.setBounds(331, 117, 89, 23);
+		frmParticipant.getContentPane().add(btnModify);
+		
+		
 		
 		txtName = new JTextField();
 		txtName.setEnabled(false);

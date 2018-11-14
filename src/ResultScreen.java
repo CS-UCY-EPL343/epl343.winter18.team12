@@ -86,7 +86,9 @@ public class ResultScreen {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				window.frame.setVisible(false);
+				LogInScreen.state=1;
 				Participant.main(array);
+				
 			}
 		});
 		button.setBounds(387, 175, 106, 23);
