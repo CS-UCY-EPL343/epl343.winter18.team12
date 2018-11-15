@@ -21,9 +21,14 @@ public class FormA_Screen {
 	private final ButtonGroup buttonGroup_4 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	
+	
+	FormA fo=null;
+	
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -184,7 +189,10 @@ public class FormA_Screen {
 		buttonGroup_5.add(radioButton_15);
 		radioButton_15.setBounds(115, 191, 41, 23);
 		frame.getContentPane().add(radioButton_15);
-		
+		LocalDate localDate = LocalDate.now();
+		JLabel lblprDate = new JLabel(dtf.format(localDate));
+		lblprDate.setBounds(393, 23, 88, 14);
+		frame.getContentPane().add(lblprDate);
 	
 		
 		JButton btnSave = new JButton("Save");
@@ -209,6 +217,8 @@ public class FormA_Screen {
 				radioButton_15.setEnabled(false);
 				btnSave.setEnabled(false);
 				FormA f=new FormA(Form_type.Form1);
+				obj_Attribute q0=new obj_Attribute("Date",Form_type.Form1,lblprDate.getText(),0, false, 0);
+				f.add_attrib(q0);
 				if(radioButton.isSelected()){
 					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,0, false, 1);
 					f.add_attrib(q1);
@@ -225,9 +235,6 @@ public class FormA_Screen {
 					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,3, false, 1);
 					f.add_attrib(q1);
 				}
-				
-				
-				
 				if(radioButton_4.isSelected()){
 					obj_Attribute q1=new obj_Attribute("Question2",Form_type.Form1,null,0, false, 1);
 					f.add_attrib(q1);
@@ -236,9 +243,6 @@ public class FormA_Screen {
 					obj_Attribute q1=new obj_Attribute("Question2",Form_type.Form1,null,1, false, 1);
 					f.add_attrib(q1);
 				}
-				
-				
-				
 				
 				if(radioButton_6.isSelected()){
 					obj_Attribute q1=new obj_Attribute("Question3",Form_type.Form1,null,0, false, 1);
@@ -249,33 +253,44 @@ public class FormA_Screen {
 					f.add_attrib(q1);
 				}
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				if(radioButton_6.isSelected()){
-					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,0, false, 1);
+				if(radioButton_8.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question4",Form_type.Form1,null,0, false, 1);
 					f.add_attrib(q1);
 				}
-				else if(radioButton_7.isSelected()){
-					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,1, false, 1);
+				else if(radioButton_9.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question4",Form_type.Form1,null,1, false, 1);
 					f.add_attrib(q1);
 				}
-				else if(radioButton_8.isSelected()){
-					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,2, false, 1);
+				else if(radioButton_10.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question4",Form_type.Form1,null,2, false, 1);
 					f.add_attrib(q1);
 				}
 				else {
-					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,3, false, 1);
+					obj_Attribute q1=new obj_Attribute("Question4",Form_type.Form1,null,3, false, 1);
 					f.add_attrib(q1);
 				}
 				
-				
+				if(radioButton_13.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question5",Form_type.Form1,null,0, false, 1);
+					f.add_attrib(q1);
+				}
+				else {
+					obj_Attribute q1=new obj_Attribute("Question5",Form_type.Form1,null,1, false, 1);
+					f.add_attrib(q1);
+				}
+				if(radioButton_15.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question6",Form_type.Form1,null,0, false, 1);
+					f.add_attrib(q1);
+				}
+				else {
+					obj_Attribute q1=new obj_Attribute("Question6",Form_type.Form1,null,1, false, 1);
+					f.add_attrib(q1);
+				}
+				if(fo!=null){
+					
+				}
+				//Participant_Screen.part.part_forms.contains(o)
+				Participant_Screen.part.part_forms.add(f);
 			}
 		});
 		btnSave.setBounds(158, 254, 89, 23);
@@ -310,10 +325,5 @@ public class FormA_Screen {
 		JLabel lblDate = new JLabel("Date:");
 		lblDate.setBounds(343, 23, 41, 14);
 		frame.getContentPane().add(lblDate);
-		LocalDate localDate = LocalDate.now();
-		JLabel lblprDate = new JLabel(dtf.format(localDate));
-		lblprDate.setBounds(393, 23, 88, 14);
-		frame.getContentPane().add(lblprDate);
-		
 	}
 }

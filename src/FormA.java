@@ -5,12 +5,16 @@ public class FormA {
 	static ArrayList<Attribute> formA;
 	static ArrayList<Attribute> formParticipant;
 	Form_type type;
+	int ID;
+	static int counter;
 	
 	ArrayList<obj_Attribute> attributes;
 	//static int totalPoints;
 	
 	public FormA(Form_type typ) {
 		type=typ;
+		ID=counter;
+		counter++;
 	}
 	public void add_attrib(obj_Attribute o){
 		attributes.add(o);
