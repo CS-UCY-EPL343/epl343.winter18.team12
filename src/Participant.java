@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Participant {
 
@@ -8,6 +9,7 @@ public class Participant {
 	private String Telephone;
 	private String email;
 	private boolean smoker;
+	static ArrayList part_attr= new ArrayList();//todo 
 	//todo Add list of forms
 	public Participant(String first,String sec,String I,String DOB,String Tel,String em,boolean smok) {
 		Fname=first;
