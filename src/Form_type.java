@@ -1,4 +1,4 @@
 
 public enum Form_type {
-	Form1
+	Participant,Form1
 }
