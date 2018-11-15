@@ -287,7 +287,11 @@ public class FormA_Screen {
 					f.add_attrib(q1);
 				}
 				if(fo!=null){
-					
+					for(int i=0;i<Participant_Screen.part.part_forms.size();i++){
+						if(Participant_Screen.part.part_forms.get(i).ID==fo.ID){
+							Participant_Screen.part.part_forms.remove(i);
+						}
+					}
 				}
 				//Participant_Screen.part.part_forms.contains(o)
 				Participant_Screen.part.part_forms.add(f);
