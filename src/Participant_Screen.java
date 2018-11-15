@@ -76,7 +76,7 @@ public class Participant_Screen {
 		frmParticipant.setBounds(100, 100, 652, 474);
 		frmParticipant.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmParticipant.getContentPane().setLayout(null);
-		
+		JList list = new JList();
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Smoker");
 		rdbtnNewRadioButton.setEnabled(false);
 		rdbtnNewRadioButton.setVerticalAlignment(SwingConstants.TOP);
@@ -99,7 +99,7 @@ public class Participant_Screen {
 		btnInsetNewForm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FormA_Screen.main(new String[1]);
-
+				FormA_Screen.fo=null;
 			}
 		});
 		btnInsetNewForm.setBounds(304, 228, 145, 21);
@@ -133,12 +133,10 @@ public class Participant_Screen {
 		scrollPane.setBounds(39, 266, 178, 93);
 		frmParticipant.getContentPane().add(scrollPane);
 		
-		JList list = new JList();
 		if(part==null)list.setEnabled(false);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
-		
-		String[] formStrings={"Choose Form...", "Form A", "Form B", "Form C", "Form D"};
+		String[] formStrings={"Choose Form...", "Form1"};
 		JComboBox comboBox1 = new JComboBox(formStrings);
 		if(part==null)comboBox1.setEnabled(false);
 		comboBox1.addActionListener(new ActionListener() {
@@ -146,30 +144,13 @@ public class Participant_Screen {
 			String form=(String)comboBox1.getSelectedItem();
 			String stringArray[]=new String[6];
 			switch(form) {
-			case "Form A": 
-				for(int i=0;i<stringArray.length;i++) {
-					stringArray[i]="FormA-"+i;
-				}
-				list.setListData(stringArray);
-				break;
-			
-			case "Form B": 
-				for(int i=0;i<stringArray.length-2;i++) {
-					stringArray[i]="FormB-"+i;
-				}
-				list.setListData(stringArray);
-				break;
-				
-			case "Form C": 
-				for(int i=0;i<stringArray.length-1;i++) {
-					stringArray[i]="FormC-"+i;
-				}
-				list.setListData(stringArray);
-				break;
-			
-			case "Form D": 
-				for(int i=0;i<stringArray.length;i++) {
-					stringArray[i]="FormD-"+i;
+			case "Form1": 
+				int count=0;
+				for(int i=0;i<part.part_forms.size();i++) {
+					if(part.part_forms.get(i).type==Form_type.Form1){
+						stringArray[count]="Form1-"+part.part_forms.get(i).ID;
+						count++;
+					}
 				}
 				list.setListData(stringArray);
 				break;
@@ -302,18 +283,21 @@ public class Participant_Screen {
 		txtId.setBounds(369, 72, 124, 20);
 		frmParticipant.getContentPane().add(txtId);
 		txtId.setColumns(10);
-		
-		
-		
-		
-		
-
-		
-	
-		
-		
-
-		
-	
+		btnEditForm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!list.isSelectionEmpty()){
+					String sel_form=(String)list.getSelectedValue();
+					int a=Integer.parseInt(sel_form.split("-")[1]);
+					for(int i=0;i<part.part_forms.size();i++){
+						if(part.part_forms.get(i).ID==a){
+							FormA_Screen.fo=part.part_forms.get(i);
+						}
+					}
+				}
+				else{
+					System.out.println("hhh");
+				}
+			}
+		});
 	}
 }

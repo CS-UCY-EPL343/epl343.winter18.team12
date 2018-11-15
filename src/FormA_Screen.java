@@ -23,7 +23,7 @@ public class FormA_Screen {
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	
 	
-	FormA fo=null;
+	static FormA fo=null;
 	
 	/**
 	 * Launch the application.
