@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -14,11 +15,15 @@ public class HomeScreen {
 	static HomeScreen window = new HomeScreen();
 	private JFrame frmHomeScreen;
 	public static ArrayList<Participant> part_list =new ArrayList<Participant>();
+	public static List<FormA> formList = new ArrayList<FormA>();
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		for(Form_type i:Form_type.values()){
+			formList.add(new FormA(i));
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -55,6 +60,11 @@ public class HomeScreen {
 			public void actionPerformed(ActionEvent e) {
 				window.frmHomeScreen.hide();
 				Search_Screen.main(null);
+				System.out.println(formList.size());
+				System.out.println(formList.get(1).formAttributes.get(0).question);
+//				for(int i=0;i<formList.size();i++){
+//					System.out.println(formList.get(i).formAttributes.get(0).question);
+//				}
 			}
 		});
 		btnNewButton_1.setBounds(190, 167, 152, 42);
