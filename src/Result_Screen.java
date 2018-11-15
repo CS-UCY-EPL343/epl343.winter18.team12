@@ -88,6 +88,7 @@ public class Result_Screen {
 				window.frame.setVisible(false);
 				LogIn_Screen.state=1;
 				Participant_Screen.main(array);
+				//todo Participant_Screen.part=something
 				
 			}
 		});

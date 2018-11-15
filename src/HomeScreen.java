@@ -88,6 +88,7 @@ public class HomeScreen {
 				window.frmHomeScreen.hide();
 				LogIn_Screen.state=0;
 				Participant_Screen.main(null);
+				Participant_Screen.part=null;
 				
 			}
 		});

@@ -23,8 +23,12 @@ public class Participant {
 	
 	static boolean start=false;
 	
-	//0 String,1 integer,2 boolean for decider
 	//todo Add list of forms
+	ArrayList<FormA> part_forms = new ArrayList<FormA>();
+	
+	
+	
+	//0 String,1 integer,2 boolean for decider
 	public Participant(String first,String sec,String I,String DOB,String Tele,String ema,boolean smoke) {
 		/**if(!start){
 			st_part_attr.add(fir);
@@ -69,5 +73,8 @@ public class Participant {
 			}
 		}
 		return null;
+	}
+	public void add_form(FormA f){
+		part_forms.add(f);
 	}
 }

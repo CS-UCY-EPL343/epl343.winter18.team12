@@ -208,6 +208,74 @@ public class FormA_Screen {
 				radioButton_14.setEnabled(false);
 				radioButton_15.setEnabled(false);
 				btnSave.setEnabled(false);
+				FormA f=new FormA(Form_type.Form1);
+				if(radioButton.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,0, false, 1);
+					f.add_attrib(q1);
+				}
+				else if(radioButton_1.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,1, false, 1);
+					f.add_attrib(q1);
+				}
+				else if(radioButton_2.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,2, false, 1);
+					f.add_attrib(q1);
+				}
+				else {
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,3, false, 1);
+					f.add_attrib(q1);
+				}
+				
+				
+				
+				if(radioButton_4.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question2",Form_type.Form1,null,0, false, 1);
+					f.add_attrib(q1);
+				}
+				else {
+					obj_Attribute q1=new obj_Attribute("Question2",Form_type.Form1,null,1, false, 1);
+					f.add_attrib(q1);
+				}
+				
+				
+				
+				
+				if(radioButton_6.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question3",Form_type.Form1,null,0, false, 1);
+					f.add_attrib(q1);
+				}
+				else {
+					obj_Attribute q1=new obj_Attribute("Question3",Form_type.Form1,null,1, false, 1);
+					f.add_attrib(q1);
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				if(radioButton_6.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,0, false, 1);
+					f.add_attrib(q1);
+				}
+				else if(radioButton_7.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,1, false, 1);
+					f.add_attrib(q1);
+				}
+				else if(radioButton_8.isSelected()){
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,2, false, 1);
+					f.add_attrib(q1);
+				}
+				else {
+					obj_Attribute q1=new obj_Attribute("Question1",Form_type.Form1,null,3, false, 1);
+					f.add_attrib(q1);
+				}
+				
+				
 			}
 		});
 		btnSave.setBounds(158, 254, 89, 23);
