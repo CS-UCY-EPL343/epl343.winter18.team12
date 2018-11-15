@@ -28,7 +28,7 @@ public class Participant {
 		smoker=smok;
 	}
 	public String ret_Fname(){
-		if(LogIn_Screen.is_admin()){
+		if(!LogIn_Screen.is_admin()){
 			return "****";
 		}
 		else{
@@ -36,7 +36,7 @@ public class Participant {
 		}
 	}
 	public String ret_Sname(){
-		if(LogIn_Screen.is_admin()){
+		if(!LogIn_Screen.is_admin()){
 			return "****";
 		}
 		else{
@@ -44,7 +44,7 @@ public class Participant {
 		}
 	}
 	public String ret_Telephone(){
-		if(LogIn_Screen.is_admin()){
+		if(!LogIn_Screen.is_admin()){
 			return "****";
 		}
 		else{
@@ -52,7 +52,7 @@ public class Participant {
 		}
 	}
 	public String ret_email(){
-		if(LogIn_Screen.is_admin()){
+		if(!LogIn_Screen.is_admin()){
 			return "****";
 		}
 		else{

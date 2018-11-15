@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -12,6 +13,7 @@ import java.awt.SystemColor;
 public class HomeScreen {
 	static HomeScreen window = new HomeScreen();
 	private JFrame frmHomeScreen;
+	public static ArrayList<Participant> part_list =new ArrayList<Participant>();
 
 	/**
 	 * Launch the application.
