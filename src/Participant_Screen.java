@@ -40,6 +40,8 @@ public class Participant_Screen {
 	private JTextField txtTelephoneno;
 	private JTextField txtExampeexamplecom;
 	private JTextField txtId;
+	
+	public static Participant part;
 
 	/**
 	 * Launch the application.
@@ -83,17 +85,17 @@ public class Participant_Screen {
 		
 		JButton btnEditForm = new JButton("Edit form");
 		//System.out.println("PartState:"+LogInScreen.state);
-		if(LogIn_Screen.state==0)btnEditForm.setEnabled(false);
+		if(part==null)btnEditForm.setEnabled(false);
 		btnEditForm.setBounds(61, 370, 85, 21);
 		frmParticipant.getContentPane().add(btnEditForm);
 		
 		JButton btnDeleteParticipant = new JButton("Delete Participant");
-		if(LogIn_Screen.state==0)btnDeleteParticipant.setEnabled(false);
+		if(part==null)btnDeleteParticipant.setEnabled(false);
 		btnDeleteParticipant.setBounds(459, 228, 145, 21);
 		frmParticipant.getContentPane().add(btnDeleteParticipant);
 		
 		JButton btnInsetNewForm = new JButton("Insert new Form");
-		if(LogIn_Screen.state==0)btnInsetNewForm.setEnabled(false);
+		if(part==null)btnInsetNewForm.setEnabled(false);
 		btnInsetNewForm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FormA_Screen.main(new String[1]);
@@ -126,19 +128,19 @@ public class Participant_Screen {
 		frmParticipant.getContentPane().add(label_5);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		if(LogIn_Screen.state==0)scrollPane.setEnabled(false);
+		if(part==null)scrollPane.setEnabled(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(39, 266, 178, 93);
 		frmParticipant.getContentPane().add(scrollPane);
 		
 		JList list = new JList();
-		if(LogIn_Screen.state==0)list.setEnabled(false);
+		if(part==null)list.setEnabled(false);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
 		
 		String[] formStrings={"Choose Form...", "Form A", "Form B", "Form C", "Form D"};
 		JComboBox comboBox1 = new JComboBox(formStrings);
-		if(LogIn_Screen.state==0)comboBox1.setEnabled(false);
+		if(part==null)comboBox1.setEnabled(false);
 		comboBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String form=(String)comboBox1.getSelectedItem();
@@ -196,7 +198,13 @@ public class Participant_Screen {
 				list.setEnabled(true);
 				scrollPane.setEnabled(true);
 				comboBox1.setEnabled(true);
-				Participant part= new Participant(txtName.getName(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
+				if(part==null){
+					part= new Participant(txtName.getName(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
+				//todo add him in the list
+				}
+				else{
+					part.modify(txtName.getName(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
+				}
 			}
 		});
 		btnSave.setEnabled(false);

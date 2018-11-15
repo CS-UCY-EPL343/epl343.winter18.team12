@@ -2,14 +2,14 @@ import java.util.ArrayList;
 
 public class Participant {
 
-	static ArrayList<Attribute> st_part_attr= new ArrayList<Attribute>();
+	/**static ArrayList<Attribute> st_part_attr= new ArrayList<Attribute>();
 	static Attribute fir=new Attribute("Fname",Form_type.Participant);
 	static Attribute se=new Attribute("Sname",Form_type.Participant);
 	static Attribute id=new Attribute("ID",Form_type.Participant);
 	static Attribute DoB=new Attribute("DateOfBirth",Form_type.Participant);
 	static Attribute Tel=new Attribute("Telephone",Form_type.Participant);
 	static Attribute em=new Attribute("Email",Form_type.Participant);
-	static Attribute smok=new Attribute("Smoker",Form_type.Participant);
+	static Attribute smok=new Attribute("Smoker",Form_type.Participant);**/
 	
 	
 	ArrayList<obj_Attribute> part_attr= new ArrayList<obj_Attribute>();
@@ -26,7 +26,7 @@ public class Participant {
 	//0 String,1 integer,2 boolean for decider
 	//todo Add list of forms
 	public Participant(String first,String sec,String I,String DOB,String Tele,String ema,boolean smoke) {
-		if(!start){
+		/**if(!start){
 			st_part_attr.add(fir);
 			st_part_attr.add(se);
 			st_part_attr.add(id);
@@ -36,7 +36,7 @@ public class Participant {
 			st_part_attr.add(smok);
 			start=true;
 			
-		}
+		}**/
 		Fname=new obj_Attribute("Fname",Form_type.Participant,first,0,false,0);
 		Sname=new obj_Attribute("Sname",Form_type.Participant,sec,0,false,0);
 		ID=new obj_Attribute("ID",Form_type.Participant,I,0,false,0);

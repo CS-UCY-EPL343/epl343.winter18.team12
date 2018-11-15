@@ -21,9 +21,7 @@ public class HomeScreen {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		for(Form_type i:Form_type.values()){
-			formList.add(new FormA(i));
-		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -42,6 +40,7 @@ public class HomeScreen {
 	 */
 	public HomeScreen() {
 		initialize();
+		FormA.create_form();
 	}
 
 	/**
@@ -61,7 +60,7 @@ public class HomeScreen {
 				window.frmHomeScreen.hide();
 				Search_Screen.main(null);
 				System.out.println(formList.size());
-				System.out.println(formList.get(1).formAttributes.get(0).question);
+				//System.out.println(formList.get(1).formAttributes.get(0).question);
 //				for(int i=0;i<formList.size();i++){
 //					System.out.println(formList.get(i).formAttributes.get(0).question);
 //				}
