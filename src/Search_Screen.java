@@ -8,6 +8,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -66,59 +68,64 @@ public class Search_Screen {
 		scrollPane.setBounds(160, 33, 106, 133);
 		frmSearch.getContentPane().add(scrollPane);
 		JList list_1 = new JList();
-		list_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list_1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Attribute1", "Attribute2", "Attribute3", "Attribute4", "Attribute5", "Attribute6", "Attribute7", "Attribute8", "Attribute9", "Attribute10", "Attribute11"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		
-		
 		JList list = new JList();
+		list_1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		ArrayList<Attribute> valuesAttr;
+//		if(list.getSelectedValue().equals(Form_type.Participant.toString())){
+//			valuesAttr=FormA.formParticipant;
+//		}else{
+//			valuesAttr=FormA.formA;
+//		}
+//		list_1.setModel(new AbstractListModel() {
+//				ArrayList<Attribute> values;
+//				//ArrayList<Attribute> values=FormA.formA;
+//			public int getSize() {
+//				return values.size();
+//			}
+//			public Attribute getElementAt(int index) {
+//				return values.get(index);
+//			}
+//		});
+		
+		
+		
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				String values[]=new String[6];
+				String values[]=new String[5];
 				switch((String)list.getSelectedValue()) {
-				case "Form1": 
-					for(int i=0;i<values.length;i++) {
-						values[i]="Form1-"+i;
+				case "Participant": 
+					for(int i=0;i<FormA.formParticipant.size();i++) {
+						values[i]="Question "+i;
 					}
+					
 					break;
 				
-				case "Form2": 
-					for(int i=0;i<values.length-2;i++) {
-						values[i]="Form2-"+i;
+				case "Form1": 
+					for(int i=0;i<FormA.formA.size();i++) {
+						values[i]="Question "+i;
 					}
 					break;
 					
-				case "Form3": 
-					for(int i=0;i<values.length-1;i++) {
-						values[i]="Form3-"+i;
-					}
-					break;
-				
-				case "Form4": 
-					for(int i=0;i<values.length;i++) {
-						values[i]="Form4-"+i;
-					}
-					break;
 				}
 				list_1.setListData(values);
 			}
 		});
 		scrollPane.setViewportView(list);
+		List<String> values1=new ArrayList<String>();
+		for(Form_type i : Form_type.values()){
+			values1.add(i.toString());
+		}
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Form1", "Form2", "Form3", "Form4", "Form5", "Form6", "Form7", "Form8", "Form9", "Form10"};
+			List<String> values=values1;
+			
+				//new ArrayList[] {"Form1", "Form2", "Form3", "Form4", "Form5", "Form6", "Form7", "Form8", "Form9", "Form10"};
+			
 			public int getSize() {
-				return values.length;
+				return values.size();
 			}
-			public Object getElementAt(int index) {
-				return values[index];
+			public String getElementAt(int index) {
+				return values.get(index);
 			}
 		});
 		

@@ -20,6 +20,7 @@ public class FormA {
 		attributes.add(o);
 	}
 	public static void create_form(){
+		formA=new ArrayList<Attribute>();
 		formA.add(new Attribute("Πόσο γρήγορα αφού ξυπνήσετε καπνίζετε το πρώτο σας τσιγάρο;",Form_type.Form1));
 		formA.add(new Attribute("Σας είναι δύσκολο να μην καπνίσετε σε μέρη όπου το κάπνισμα απαγορεύεται; (π.χ. εκκλησία, βιβλιοθήκες, σινεμά)",Form_type.Form1));
 		formA.add(new Attribute("Ποιο τσιγάρο σας θα σας είναι πιο δύσκολο να μην το καπνίσετε;",Form_type.Form1));
@@ -27,6 +28,7 @@ public class FormA {
 		formA.add(new Attribute("Καπνίζετε πιο πολύ το πρωί ή το απόγευμα;",Form_type.Form1));
 		formA.add(new Attribute("Καπνίζετε και όταν μια αρρώστια σας αναγκάζει να μείνετε στο κρεβάτι;",Form_type.Form1));
 		
+		formParticipant=new ArrayList<Attribute>();
 		formParticipant.add(new Attribute("Name",Form_type.Participant));
 		formParticipant.add(new Attribute("Surname",Form_type.Participant));
 		formParticipant.add(new Attribute("ID",Form_type.Participant));

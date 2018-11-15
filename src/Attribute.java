@@ -7,5 +7,7 @@ public class Attribute {
 		question =q;
 		form=f;
 	}
-	
+	public String toString(){
+		return this.question;
+	}
 }
