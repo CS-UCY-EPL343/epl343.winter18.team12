@@ -83,6 +83,7 @@ public class SetValue {
 					textField_1.setEnabled(true);
 				}
 			}
+			
 		});
 		
 		JLabel lblEgFor = new JLabel("e.g. \"1\" for searching only the first form of every participant");

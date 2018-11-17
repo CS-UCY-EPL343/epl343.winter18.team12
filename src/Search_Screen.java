@@ -51,6 +51,7 @@ public class Search_Screen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		 
 		List<Attribute> attributesToSearch = new ArrayList<Attribute>();
 		objAttributesToSearch =  new ArrayList<obj_Attribute>();
 		frmSearch = new JFrame();
