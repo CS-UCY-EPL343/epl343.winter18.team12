@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
@@ -55,9 +56,11 @@ public class Result_Screen {
 		scrollPane.setBounds(46, 100, 331, 166);
 		frame.getContentPane().add(scrollPane);
 		
+		//String array[]= new String[result_part.size()];
 		String array[]= new String[40];
 		for(int i=0;i<array.length;i++) {
-			array[i]="participant"+(i);
+			//array[i]="participant-"+result_part.get(i).ID.text;
+			array[i]="participant-"+i;
 		}
 		JList list = new JList(array);
 		scrollPane.setViewportView(list);
@@ -65,11 +68,7 @@ public class Result_Screen {
 		JButton btnSelectAll = new JButton("Select All");
 		btnSelectAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-					
-					list.setSelectionInterval(0, 39);
-					
-				
+					list.setSelectionInterval(0, array.length-1);
 			}
 		});
 		btnSelectAll.setBounds(387, 243, 106, 23);
@@ -81,16 +80,29 @@ public class Result_Screen {
 		frame.getContentPane().add(lblResults);
 		
 		JButton btnCalculations = new JButton("Calculations");
+		btnCalculations.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnCalculations.setBounds(387, 209, 106, 23);
 		frame.getContentPane().add(btnCalculations);
 		
 		JButton button = new JButton("View Details");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				window.frame.setVisible(false);
-				LogIn_Screen.state=1;
-				Participant_Screen.main(array);
-				//todo Participant_Screen.part=something
+				//LogIn_Screen.state=1;
+				int size=list.getSelectedIndices().length;
+				if(size<1) {
+					JOptionPane.showMessageDialog(frame, "Choose one Participant!!!", "WARNING",JOptionPane.ERROR_MESSAGE);
+				}
+				else if(size>1) {
+					JOptionPane.showMessageDialog(frame, "Choose only one Participant!!!", "WARNING",JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					window.frame.setVisible(false);
+					Participant_Screen.main(null);
+					Participant_Screen.part=result_part.get(list.getSelectedIndex());
+				}
 				
 			}
 		});
