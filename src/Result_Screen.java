@@ -7,6 +7,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,6 +15,7 @@ import java.awt.Font;
 public class Result_Screen {
 	static Result_Screen window = new Result_Screen();
 	private JFrame frame;
+	static ArrayList<Participant> result_part =new ArrayList<Participant>();
 
 	/**
 	 * Launch the application.
