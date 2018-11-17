@@ -10,8 +10,11 @@ public class FormA {
 	
 	ArrayList<obj_Attribute> attributes;
 	//static int totalPoints;
-	
+	public static void delete_form() {
+		counter--;
+	}
 	public FormA(Form_type typ) {
+		attributes=new ArrayList<obj_Attribute>();
 		type=typ;
 		ID=counter;
 		counter++;

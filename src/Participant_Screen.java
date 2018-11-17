@@ -180,8 +180,9 @@ public class Participant_Screen {
 				scrollPane.setEnabled(true);
 				comboBox1.setEnabled(true);
 				if(part==null){
-					part= new Participant(txtName.getName(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
-				//todo add him in the list
+					//System.out.println(txtName.getText());
+					part= new Participant(txtName.getText(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
+					//todo add him in the list
 				}
 				else{
 					part.modify(txtName.getName(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
@@ -290,7 +291,10 @@ public class Participant_Screen {
 					int a=Integer.parseInt(sel_form.split("-")[1]);
 					for(int i=0;i<part.part_forms.size();i++){
 						if(part.part_forms.get(i).ID==a){
+							FormA_Screen.main(new String[1]);
 							FormA_Screen.fo=part.part_forms.get(i);
+							FormA_Screen.set_values();
+							break;
 						}
 					}
 				}

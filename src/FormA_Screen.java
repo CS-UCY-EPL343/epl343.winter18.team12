@@ -13,17 +13,34 @@ import java.awt.event.ActionEvent;
 
 public class FormA_Screen {
 
-	private JFrame frame;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
-	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
-	private final ButtonGroup buttonGroup_3 = new ButtonGroup();
-	private final ButtonGroup buttonGroup_4 = new ButtonGroup();
-	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
-	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-	
+	static private JFrame frame;
+	static private final ButtonGroup buttonGroup = new ButtonGroup();
+	static private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	static private final ButtonGroup buttonGroup_2 = new ButtonGroup();
+	static private final ButtonGroup buttonGroup_3 = new ButtonGroup();
+	static private final ButtonGroup buttonGroup_4 = new ButtonGroup();
+	static private final ButtonGroup buttonGroup_5 = new ButtonGroup();
+	static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	static private JLabel lblprDate;
+	static private JRadioButton radioButton = new JRadioButton("0");
+	static private JRadioButton radioButton_1 = new JRadioButton("1");
+	static private JRadioButton radioButton_2 = new JRadioButton("2");
+	static private JRadioButton radioButton_3 = new JRadioButton("3");
+	static private JRadioButton radioButton_4 = new JRadioButton("0");
+	static private JRadioButton radioButton_5 = new JRadioButton("1");
+	static private JRadioButton radioButton_6 = new JRadioButton("0");
+	static private JRadioButton radioButton_7 = new JRadioButton("1");
+	static private JRadioButton radioButton_8 = new JRadioButton("0");
+	static private JRadioButton radioButton_9 = new JRadioButton("1");
+	static private JRadioButton radioButton_10 = new JRadioButton("2");
+	static private JRadioButton radioButton_11 = new JRadioButton("3");
+	static private JRadioButton radioButton_12 = new JRadioButton("1");
+	static private JRadioButton radioButton_13 = new JRadioButton("0");
+	static private JRadioButton radioButton_14 = new JRadioButton("1");
+	static private JRadioButton radioButton_15 = new JRadioButton("0");
 	
 	static FormA fo=null;
+	static FormA_Screen window = new FormA_Screen();
 	
 	/**
 	 * Launch the application.
@@ -33,7 +50,6 @@ public class FormA_Screen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormA_Screen window = new FormA_Screen();
 					window.frame.setVisible(true);
 					
 				} catch (Exception e) {
@@ -42,7 +58,80 @@ public class FormA_Screen {
 			}
 		});
 	}
-
+	
+	public static void set_values() {
+		if(fo==null)
+			return;
+		lblprDate.setText(fo.attributes.get(0).text);
+		switch(fo.attributes.get(1).value) {
+		case 0:
+			radioButton.setSelected(true);
+			break;
+		case 1:
+			radioButton.setSelected(false);
+			radioButton_1.setSelected(true);
+			break;
+		case 2:
+			radioButton_2.setSelected(true);
+			break;
+		case 3:
+			radioButton_3.setSelected(true);
+			break;
+		}
+		
+		switch(fo.attributes.get(2).value) {
+		case 0:
+			radioButton_4.setSelected(true);
+			break;
+		case 1:
+			radioButton_5.setSelected(true);
+			break;
+		}
+		
+		switch(fo.attributes.get(3).value) {
+		case 0:
+			radioButton_6.setSelected(true);
+			break;
+		case 1:
+			radioButton_7.setSelected(true);
+			break;
+		}
+		
+		switch(fo.attributes.get(4).value) {
+		case 0:
+			radioButton_8.setSelected(true);
+			break;
+		case 1:
+			radioButton_9.setSelected(true);
+			break;
+		case 2:
+			radioButton_10.setSelected(true);
+			break;
+		case 3:
+			radioButton_11.setSelected(true);
+			break;
+		}
+			
+		switch(fo.attributes.get(5).value) {
+		case 0:
+			radioButton_13.setSelected(true);
+			break;
+		case 1:
+			radioButton_12.setSelected(true);
+			break;
+		}
+		
+		switch(fo.attributes.get(6).value) {
+		case 0:
+			radioButton_15.setSelected(true);
+			break;
+		case 1:
+			radioButton_14.setSelected(true);
+			break;
+		}
+	}
+	
+	
 	/**
 	 * Create the application.
 	 */
@@ -83,39 +172,37 @@ public class FormA_Screen {
 		lblQuestion_5.setBounds(38, 195, 71, 14);
 		frame.getContentPane().add(lblQuestion_5);
 		
-		JRadioButton radioButton = new JRadioButton("0");
 		radioButton.setEnabled(false);
 		radioButton.setSelected(true);
 		buttonGroup.add(radioButton);
 		radioButton.setBounds(115, 66, 41, 23);
 		frame.getContentPane().add(radioButton);
 		
-		JRadioButton radioButton_1 = new JRadioButton("1");
 		radioButton_1.setEnabled(false);
 		buttonGroup.add(radioButton_1);
 		radioButton_1.setBounds(158, 66, 41, 23);
 		frame.getContentPane().add(radioButton_1);
 		
-		JRadioButton radioButton_2 = new JRadioButton("2");
+		
 		radioButton_2.setEnabled(false);
 		buttonGroup.add(radioButton_2);
 		radioButton_2.setBounds(201, 66, 41, 23);
 		frame.getContentPane().add(radioButton_2);
 		
-		JRadioButton radioButton_3 = new JRadioButton("3");
+		
 		radioButton_3.setEnabled(false);
 		buttonGroup.add(radioButton_3);
 		radioButton_3.setBounds(244, 66, 41, 23);
 		frame.getContentPane().add(radioButton_3);
 		
-		JRadioButton radioButton_4 = new JRadioButton("0");
+		
 		radioButton_4.setEnabled(false);
 		radioButton_4.setSelected(true);
 		buttonGroup_1.add(radioButton_4);
 		radioButton_4.setBounds(115, 91, 41, 23);
 		frame.getContentPane().add(radioButton_4);
 		
-		JRadioButton radioButton_5 = new JRadioButton("1");
+		
 		radioButton_5.setEnabled(false);
 		buttonGroup_1.add(radioButton_5);
 		radioButton_5.setBounds(158, 91, 41, 23);
@@ -126,71 +213,70 @@ public class FormA_Screen {
 		lblForma.setBounds(38, 11, 97, 32);
 		frame.getContentPane().add(lblForma);
 		
-		JRadioButton radioButton_6 = new JRadioButton("0");
+		
 		radioButton_6.setEnabled(false);
 		radioButton_6.setSelected(true);
 		buttonGroup_2.add(radioButton_6);
 		radioButton_6.setBounds(115, 116, 41, 23);
 		frame.getContentPane().add(radioButton_6);
 		
-		JRadioButton radioButton_7 = new JRadioButton("1");
+		
 		radioButton_7.setEnabled(false);
 		buttonGroup_2.add(radioButton_7);
 		radioButton_7.setBounds(158, 116, 41, 23);
 		frame.getContentPane().add(radioButton_7);
 		
-		JRadioButton radioButton_8 = new JRadioButton("0");
+		
 		radioButton_8.setEnabled(false);
 		radioButton_8.setSelected(true);
 		buttonGroup_3.add(radioButton_8);
 		radioButton_8.setBounds(115, 141, 41, 23);
 		frame.getContentPane().add(radioButton_8);
 		
-		JRadioButton radioButton_9 = new JRadioButton("1");
+		
 		radioButton_9.setEnabled(false);
 		buttonGroup_3.add(radioButton_9);
 		radioButton_9.setBounds(158, 141, 41, 23);
 		frame.getContentPane().add(radioButton_9);
 		
-		JRadioButton radioButton_10 = new JRadioButton("2");
 		radioButton_10.setEnabled(false);
 		buttonGroup_3.add(radioButton_10);
 		radioButton_10.setBounds(201, 141, 41, 23);
 		frame.getContentPane().add(radioButton_10);
 		
-		JRadioButton radioButton_11 = new JRadioButton("3");
+		
 		radioButton_11.setEnabled(false);
 		buttonGroup_3.add(radioButton_11);
 		radioButton_11.setBounds(244, 141, 41, 23);
 		frame.getContentPane().add(radioButton_11);
 		
-		JRadioButton radioButton_12 = new JRadioButton("1");
+		
 		radioButton_12.setEnabled(false);
 		buttonGroup_4.add(radioButton_12);
 		radioButton_12.setBounds(158, 166, 41, 23);
 		frame.getContentPane().add(radioButton_12);
 		
-		JRadioButton radioButton_13 = new JRadioButton("0");
+		
 		radioButton_13.setEnabled(false);
 		radioButton_13.setSelected(true);
 		buttonGroup_4.add(radioButton_13);
 		radioButton_13.setBounds(115, 166, 41, 23);
 		frame.getContentPane().add(radioButton_13);
 		
-		JRadioButton radioButton_14 = new JRadioButton("1");
+		
 		radioButton_14.setEnabled(false);
 		buttonGroup_5.add(radioButton_14);
 		radioButton_14.setBounds(158, 191, 41, 23);
 		frame.getContentPane().add(radioButton_14);
 		
-		JRadioButton radioButton_15 = new JRadioButton("0");
+		
 		radioButton_15.setEnabled(false);
 		radioButton_15.setSelected(true);
 		buttonGroup_5.add(radioButton_15);
 		radioButton_15.setBounds(115, 191, 41, 23);
 		frame.getContentPane().add(radioButton_15);
 		LocalDate localDate = LocalDate.now();
-		JLabel lblprDate = new JLabel(dtf.format(localDate));
+		lblprDate = new JLabel(dtf.format(localDate));
 		lblprDate.setBounds(393, 23, 88, 14);
 		frame.getContentPane().add(lblprDate);
 	
@@ -216,6 +302,15 @@ public class FormA_Screen {
 				radioButton_14.setEnabled(false);
 				radioButton_15.setEnabled(false);
 				btnSave.setEnabled(false);
+				if(fo!=null){
+					for(int i=0;i<Participant_Screen.part.part_forms.size();i++){
+						if(Participant_Screen.part.part_forms.get(i).ID==fo.ID){
+							Participant_Screen.part.part_forms.remove(i);
+							FormA.delete_form();
+							break;
+						}
+					}
+				}
 				FormA f=new FormA(Form_type.Form1);
 				obj_Attribute q0=new obj_Attribute("Date",Form_type.Form1,lblprDate.getText(),0, false, 0);
 				f.add_attrib(q0);
@@ -285,13 +380,6 @@ public class FormA_Screen {
 				else {
 					obj_Attribute q1=new obj_Attribute("Question6",Form_type.Form1,null,1, false, 1);
 					f.add_attrib(q1);
-				}
-				if(fo!=null){
-					for(int i=0;i<Participant_Screen.part.part_forms.size();i++){
-						if(Participant_Screen.part.part_forms.get(i).ID==fo.ID){
-							Participant_Screen.part.part_forms.remove(i);
-						}
-					}
 				}
 				//Participant_Screen.part.part_forms.contains(o)
 				Participant_Screen.part.part_forms.add(f);
