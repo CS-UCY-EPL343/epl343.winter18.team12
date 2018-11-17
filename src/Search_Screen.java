@@ -8,6 +8,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.Icon;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import javax.swing.ListSelectionModel;
 public class Search_Screen {
 
 	private JFrame frmSearch;
+	public static List<obj_Attribute> objAttributesToSearch;
 
 	/**
 	 * Launch the application.
@@ -50,6 +52,7 @@ public class Search_Screen {
 	 */
 	private void initialize() {
 		List<Attribute> attributesToSearch = new ArrayList<Attribute>();
+		objAttributesToSearch =  new ArrayList<obj_Attribute>();
 		frmSearch = new JFrame();
 		frmSearch.setTitle("Search");
 		frmSearch.setBounds(100, 100, 709, 449);
@@ -190,7 +193,7 @@ public class Search_Screen {
 				}
 			}
 		});
-		btnAdd.setBounds(598, 25, 85, 21);
+		btnAdd.setBounds(584, 25, 99, 21);
 		frmSearch.getContentPane().add(btnAdd);
 		
 		JButton btnSearch = new JButton("Search");
@@ -211,5 +214,59 @@ public class Search_Screen {
 		});
 		btnHome.setBounds(10, 376, 89, 23);
 		frmSearch.getContentPane().add(btnHome);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(attributesToSearch.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nothing to delete.");
+				}else {
+				if(list_2.getSelectedValue()==null) {JOptionPane.showMessageDialog(null, "Please select Attribute before deleting it from search list.");}
+				else
+				{
+						
+				attributesToSearch.remove((Attribute)list_2.getSelectedValue());
+				Object formAttributesGeneric[]=attributesToSearch.toArray();
+				Attribute formAttributes[]=new Attribute[formAttributesGeneric.length];
+						for(int i=0;i<formAttributesGeneric.length;i++) {
+							formAttributes[i]=(Attribute)formAttributesGeneric[i];
+						}
+				list_2.setListData(formAttributes);
+						}
+					}
+				
+			}
+		});
+		btnDelete.setBounds(584, 228, 99, 21);
+		frmSearch.getContentPane().add(btnDelete);
+		
+		JButton btnSetValue = new JButton("Set Value");
+		btnSetValue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(list_2.getSelectedValue()!=null) {
+					SetValue.label = new JLabel("-----------------------");
+					SetValue.textField_1 = new JTextField();
+					SetValue.rdbtnAllForms= new JRadioButton("All Forms");
+				SetValue.label.setText(list_2.getSelectedValue().question);
+			
+					if(list_2.getSelectedValue().form.equals(Form_type.Participant)) {
+						SetValue.textField_1.setText("1");
+						SetValue.textField_1.setEnabled(false);
+						SetValue.rdbtnAllForms.setSelected(false);
+						SetValue.rdbtnAllForms.setEnabled(false);
+					
+					}
+					SetValue.main(null);
+				}
+				
+				
+				
+				
+			}
+			
+		});
+		btnSetValue.setBounds(584, 193, 99, 21);
+		frmSearch.getContentPane().add(btnSetValue);
 	}
 }
