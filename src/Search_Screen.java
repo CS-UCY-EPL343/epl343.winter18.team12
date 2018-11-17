@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
+import javax.swing.Icon;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -100,7 +101,13 @@ public class Search_Screen {
 				switch((String)list.getSelectedValue()) {
 				
 				case "Participant": 
-					Object formAttributesGeneric[]=FormA.formParticipant.toArray();
+					Object formAttributesGeneric[]=null;
+					try {
+					formAttributesGeneric=FormA.formParticipant.toArray();
+					}catch(Exception e) {
+						System.out.println("Dont run it before running Home Screen");
+						System.exit(0);
+					}
 					Attribute formAttributes[]=new Attribute[formAttributesGeneric.length];
 							for(int i=0;i<formAttributesGeneric.length;i++) {
 								formAttributes[i]=(Attribute)formAttributesGeneric[i];
@@ -110,7 +117,13 @@ public class Search_Screen {
 					break;
 				
 				case "Form1": 
+					formAttributesGeneric=null;
+					try {
 					formAttributesGeneric=FormA.formA.toArray();
+				}catch(Exception e) {
+					System.out.println("Dont run it before running Home Screen");
+					System.exit(0);
+				}
 					formAttributes=new Attribute[formAttributesGeneric.length];
 							for(int i=0;i<formAttributesGeneric.length;i++) {
 								formAttributes[i]=(Attribute)formAttributesGeneric[i];
@@ -155,8 +168,16 @@ public class Search_Screen {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(list_1.getSelectedValue()==null)JOptionPane.showMessageDialog(null, "Please select Form and Attribute before adding it to search list.");
+				if(list_1.getSelectedValue()==null) {JOptionPane.showMessageDialog(null, "Please select Form and Attribute before adding it to search list.");}
 				else
+				{
+					if(attributesToSearch.contains((Attribute)list_1.getSelectedValue())) {
+						JOptionPane.showMessageDialog(null, "Already added attribute.");
+					}else {
+						if((list_1.getSelectedValue().question.equals("Name")||list_1.getSelectedValue().question.equals("Surname"))&&!LogIn_Screen.is_admin()) {
+							
+							JOptionPane.showMessageDialog(null, "You are not authorized to search using Participant name and surname.", "WARNING",JOptionPane.ERROR_MESSAGE);
+						}else {
 				attributesToSearch.add((Attribute)list_1.getSelectedValue());
 				Object formAttributesGeneric[]=attributesToSearch.toArray();
 				Attribute formAttributes[]=new Attribute[formAttributesGeneric.length];
@@ -164,6 +185,9 @@ public class Search_Screen {
 							formAttributes[i]=(Attribute)formAttributesGeneric[i];
 						}
 				list_2.setListData(formAttributes);
+						}
+					}
+				}
 			}
 		});
 		btnAdd.setBounds(598, 25, 85, 21);
