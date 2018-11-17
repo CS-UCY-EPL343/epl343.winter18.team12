@@ -180,9 +180,8 @@ public class Participant_Screen {
 				scrollPane.setEnabled(true);
 				comboBox1.setEnabled(true);
 				if(part==null){
-					//System.out.println(txtName.getText());
 					part= new Participant(txtName.getText(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
-					//todo add him in the list
+					Home_Screen.all_part.add(part);
 				}
 				else{
 					part.modify(txtName.getName(),txtSurname.getText(),txtId.getText(),txtDate.getText(),txtTelephoneno.getText(),txtExampeexamplecom.getText(),rdbtnNewRadioButton.isSelected());
@@ -268,7 +267,7 @@ public class Participant_Screen {
 			public void actionPerformed(ActionEvent e) {
 				frmParticipant.setVisible(false);
 				initialize();
-				HomeScreen.main(null);
+				Home_Screen.main(null);
 			}
 		});
 		button.setBounds(10, 401, 89, 23);

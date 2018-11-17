@@ -11,11 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
 
-public class HomeScreen {
-	static HomeScreen window = new HomeScreen();
+public class Home_Screen {
+	static Home_Screen window = new Home_Screen();
 	private JFrame frmHomeScreen;
 	public static ArrayList<Participant> part_list =new ArrayList<Participant>();
 	public static List<FormA> formList = new ArrayList<FormA>();
+	public static ArrayList<Participant> all_part=new ArrayList<Participant>();
 
 	/**
 	 * Launch the application.
@@ -38,7 +39,7 @@ public class HomeScreen {
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public HomeScreen() {
+	public Home_Screen() {
 		initialize();
 		FormA.create_form();
 	}

@@ -174,7 +174,7 @@ public class Search_Screen {
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmSearch.setVisible(false);
-				HomeScreen.main(null);
+				Home_Screen.main(null);
 			}
 		});
 		btnHome.setBounds(10, 227, 89, 23);

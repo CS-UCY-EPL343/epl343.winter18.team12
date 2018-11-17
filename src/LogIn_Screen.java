@@ -89,12 +89,12 @@ public class LogIn_Screen {
 			public void actionPerformed(ActionEvent e) {
 				if(textField.getText().equals(admin_username)&&passwordField.getText().equals(admin_pass)) {
 					admin=true;
-					HomeScreen.main(null);
+					Home_Screen.main(null);
 					window.frmLogin.hide();
 					initialize();
 					window.frmLogin.hide();
 				}else if (textField.getText().equals(user_username)&&passwordField.getText().equals(user_pass)){	
-					HomeScreen.main(null);
+					Home_Screen.main(null);
 					window.frmLogin.hide();
 					initialize();
 					window.frmLogin.hide();
