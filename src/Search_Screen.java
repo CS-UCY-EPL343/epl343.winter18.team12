@@ -194,7 +194,7 @@ public class Search_Screen {
 		frmSearch.getContentPane().add(btnAdd);
 		
 		JButton btnSearch = new JButton("Search");
-		btnSearch.setBounds(10, 344, 85, 21);
+		btnSearch.setBounds(10, 344, 89, 23);
 		frmSearch.getContentPane().add(btnSearch);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
