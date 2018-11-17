@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import java.awt.Color;
@@ -22,6 +23,7 @@ public class Calculations_Screen extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	static ArrayList<Participant> calculation_part =new ArrayList<Participant>();
 
 	/**
 	 * Launch the application.
@@ -74,8 +76,10 @@ public class Calculations_Screen extends JFrame {
 		
 		JRadioButton rdbtnStandardDeviation = new JRadioButton("Standard deviation");
 		buttonGroup.add(rdbtnStandardDeviation);
-		rdbtnStandardDeviation.setBounds(21, 74, 131, 23);
+		rdbtnStandardDeviation.setBounds(21, 74, 139, 23);
 		contentPane.add(rdbtnStandardDeviation);
+		
+		rdbtnAverage.setSelected(true);
 		
 		JLabel lblForms = new JLabel("Forms");
 		lblForms.setBounds(243, 10, 72, 14);
@@ -100,7 +104,7 @@ public class Calculations_Screen extends JFrame {
 				textField.setText("last");
 			}
 		});
-		btnLast.setBounds(148, 129, 72, 14);
+		btnLast.setBounds(161, 116, 72, 14);
 		contentPane.add(btnLast);
 		
 		JButton btnFirst = new JButton("First");
@@ -109,7 +113,7 @@ public class Calculations_Screen extends JFrame {
 				textField.setText("first");
 			}
 		});
-		btnFirst.setBounds(148, 104, 72, 14);
+		btnFirst.setBounds(161, 92, 72, 14);
 		contentPane.add(btnFirst);
 		
 		JLabel lblNewLabel = new JLabel("Result:");
@@ -122,5 +126,14 @@ public class Calculations_Screen extends JFrame {
 		Answer.setFont(new Font("Tahoma", Font.BOLD, 18));
 		Answer.setBounds(21, 237, 96, 30);
 		contentPane.add(Answer);
+		
+		JButton btnAll = new JButton("All");
+		btnAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textField.setText("all");
+			}
+		});
+		btnAll.setBounds(161, 140, 72, 14);
+		contentPane.add(btnAll);
 	}
 }

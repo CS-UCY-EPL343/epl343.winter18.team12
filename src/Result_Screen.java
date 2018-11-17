@@ -82,6 +82,18 @@ public class Result_Screen {
 		JButton btnCalculations = new JButton("Calculations");
 		btnCalculations.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int size=list.getSelectedIndices().length;
+				if(size<1) {
+					JOptionPane.showMessageDialog(frame, "Choose at least one Participant!!!", "WARNING",JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					window.frame.setVisible(false);
+					Calculations_Screen.main(null);
+					int []temp=list.getSelectedIndices();
+					for(int i=0;i<temp.length;i++) {
+						Calculations_Screen.calculation_part.add(result_part.get(temp[i]));
+					}
+				}
 			}
 		});
 		btnCalculations.setBounds(387, 209, 106, 23);
