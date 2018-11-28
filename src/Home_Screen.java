@@ -75,9 +75,6 @@ public class Home_Screen {
 			public void actionPerformed(ActionEvent arg0) {
 				window.frmHomeScreen.hide();
 				LogIn_Screen.window.frmLogin.show();
-				
-
-				
 			}
 		});
 		btnNewButton_2.setBounds(403, 301, 89, 23);

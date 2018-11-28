@@ -31,7 +31,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.ListSelectionModel;
 
 public class Participant_Screen {
-	static Participant_Screen window = new Participant_Screen();
 	static JLabel label_4;
 	private JFrame frmParticipant;
 	private static JTextField txtName;
@@ -40,9 +39,11 @@ public class Participant_Screen {
 	private static JTextField txtTelephoneno;
 	private static JTextField txtExampeexamplecom;
 	private static JTextField txtId;
-	
+	private static JComboBox comboBox1;
 	public static Participant part;
 	public static boolean pothen_irtes=true;
+	public static JList list = new JList();
+	static Participant_Screen window = new Participant_Screen();
 
 	/**
 	 * Launch the application.
@@ -59,6 +60,33 @@ public class Participant_Screen {
 			}
 		});
 	}
+	
+	public static void show(){
+		String form=(String)comboBox1.getSelectedItem();
+		String stringArray[];
+		switch(form) {
+		case "Form1": 
+			stringArray=new String[6];
+			int count=0;
+			for(int i=0;i<part.part_forms.size();i++) {
+				if(part.part_forms.get(i).type==Form_type.Form1){
+					stringArray[count]="Form1-"+part.part_forms.get(i).ID;
+					count++;
+				}
+			}
+			list.setListData(stringArray);
+			break;
+		case "Choose Form...": 
+			stringArray=new String[1];
+			for(int i=0;i<1;i++) {
+				stringArray[i]="";
+			}
+			list.setListData(stringArray);
+			break;
+		}
+	}
+	
+	
 	public static void stars(){
 		if(part==null)
 			return;
@@ -94,7 +122,6 @@ public class Participant_Screen {
 		frmParticipant.setBounds(100, 100, 652, 474);
 		frmParticipant.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmParticipant.getContentPane().setLayout(null);
-		JList list = new JList();
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Smoker");
 		rdbtnNewRadioButton.setEnabled(false);
 		rdbtnNewRadioButton.setVerticalAlignment(SwingConstants.TOP);
@@ -155,7 +182,7 @@ public class Participant_Screen {
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(list);
 		String[] formStrings={"Choose Form...", "Form1"};
-		JComboBox comboBox1 = new JComboBox(formStrings);
+		comboBox1 = new JComboBox(formStrings);
 		if(part==null)comboBox1.setEnabled(false);
 		comboBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

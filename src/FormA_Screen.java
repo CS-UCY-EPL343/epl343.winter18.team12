@@ -403,6 +403,7 @@ public class FormA_Screen {
 				}
 				//Participant_Screen.part.part_forms.contains(o)
 				Participant_Screen.part.part_forms.add(f);
+				Participant_Screen.show();
 			}
 		});
 		btnSave.setBounds(158, 254, 89, 23);
