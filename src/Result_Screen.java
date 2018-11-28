@@ -14,10 +14,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 public class Result_Screen {
-	static Result_Screen window = new Result_Screen();
 	private JFrame frame;
-	static ArrayList<Participant> result_part =new ArrayList<Participant>();
-
+	static ArrayList<Participant> result_part = new ArrayList<Participant>();
+	static Result_Screen window = new Result_Screen();
+	static JList list;
+	static JScrollPane scrollPane;
 	/**
 	 * Launch the application.
 	 */
@@ -34,6 +35,19 @@ public class Result_Screen {
 		});
 	}
 
+	/*public static void set_list(){
+		result_part.add(new Participant("aaa","bbb","r","ddd","eee","fff",true));						//HERE
+		String array[]= new String[result_part.size()];
+		//String array[]= new String[40];
+		for(int i=0;i<array.length;i++) {
+			array[i]="participant-"+result_part.get(i).ID.text;
+			//array[i]="participant-"+i;
+		}
+		list = new JList(array);
+		scrollPane.setViewportView(list);
+	}*/
+	
+	
 	/**
 	 * Create the application.
 	 * @wbp.parser.entryPoint
@@ -51,18 +65,19 @@ public class Result_Screen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(46, 100, 331, 166);
 		frame.getContentPane().add(scrollPane);
 		
-		//String array[]= new String[result_part.size()];
-		String array[]= new String[40];
+		result_part.addAll(Home_Screen.all_part);
+		String array[]= new String[result_part.size()];
+		//String array[]= new String[40];
 		for(int i=0;i<array.length;i++) {
-			//array[i]="participant-"+result_part.get(i).ID.text;
-			array[i]="participant-"+i;
+			array[i]="participant-"+result_part.get(i).ID.text;
+			//array[i]="participant-"+i;
 		}
-		JList list = new JList(array);
+		list = new JList(array);
 		scrollPane.setViewportView(list);
 		
 		JButton btnSelectAll = new JButton("Select All");
@@ -114,12 +129,14 @@ public class Result_Screen {
 					window.frame.setVisible(false);
 					Participant_Screen.main(null);
 					Participant_Screen.part=result_part.get(list.getSelectedIndex());
+					Participant_Screen.stars();
+					Participant_Screen.pothen_irtes=false;
 				}
 				
 			}
 		});
 		button.setBounds(387, 175, 106, 23);
 		frame.getContentPane().add(button);
-		
+		// set_list();
 	}
 }

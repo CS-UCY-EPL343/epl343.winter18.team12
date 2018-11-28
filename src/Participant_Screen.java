@@ -34,14 +34,15 @@ public class Participant_Screen {
 	static Participant_Screen window = new Participant_Screen();
 	static JLabel label_4;
 	private JFrame frmParticipant;
-	private JTextField txtName;
-	private JTextField txtSurname;
-	private JTextField txtDate;
-	private JTextField txtTelephoneno;
-	private JTextField txtExampeexamplecom;
-	private JTextField txtId;
+	private static JTextField txtName;
+	private static JTextField txtSurname;
+	private static JTextField txtDate;
+	private static JTextField txtTelephoneno;
+	private static JTextField txtExampeexamplecom;
+	private static JTextField txtId;
 	
 	public static Participant part;
+	public static boolean pothen_irtes=true;
 
 	/**
 	 * Launch the application.
@@ -58,7 +59,24 @@ public class Participant_Screen {
 			}
 		});
 	}
-
+	public static void stars(){
+		if(part==null)
+			return;
+		if(!LogIn_Screen.is_admin()){
+			txtName.setText("****");
+			txtSurname.setText("****");
+		}
+		else{
+			txtName.setText(part.Fname.text);
+			txtSurname.setText(part.Sname.text);
+		}
+		txtDate.setText(part.DateOfBirth.text);
+		txtTelephoneno.setText(part.Telephone.text);
+		txtExampeexamplecom.setText(part.email.text);
+		txtId.setText(part.ID.text);
+	}
+	
+	
 	/**
 	 * Create the application.
 	 * @wbp.parser.entryPoint
@@ -142,15 +160,23 @@ public class Participant_Screen {
 		comboBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String form=(String)comboBox1.getSelectedItem();
-			String stringArray[]=new String[6];
+			String stringArray[];
 			switch(form) {
 			case "Form1": 
+				stringArray=new String[6];
 				int count=0;
 				for(int i=0;i<part.part_forms.size();i++) {
 					if(part.part_forms.get(i).type==Form_type.Form1){
 						stringArray[count]="Form1-"+part.part_forms.get(i).ID;
 						count++;
 					}
+				}
+				list.setListData(stringArray);
+				break;
+			case "Choose Form...": 
+				stringArray=new String[1];
+				for(int i=0;i<1;i++) {
+					stringArray[i]="";
 				}
 				list.setListData(stringArray);
 				break;
@@ -215,8 +241,6 @@ public class Participant_Screen {
 		btnModify.setBounds(331, 117, 89, 23);
 		frmParticipant.getContentPane().add(btnModify);
 		
-		
-		
 		txtName = new JTextField();
 		txtName.setEnabled(false);
 		txtName.setText("Name...");
@@ -262,12 +286,19 @@ public class Participant_Screen {
 		lblFormsCompleted.setBounds(10, 184, 194, 32);
 		frmParticipant.getContentPane().add(lblFormsCompleted);
 		
-		JButton button = new JButton("Home <-");
+		JButton button = new JButton("Back <-");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmParticipant.setVisible(false);
-				initialize();
-				Home_Screen.main(null);
+				if(pothen_irtes){
+					frmParticipant.setVisible(false);
+					initialize();
+					Home_Screen.main(null);
+				}
+				else{
+					frmParticipant.setVisible(false);
+					initialize();
+					Result_Screen.main(null);
+				}
 			}
 		});
 		button.setBounds(10, 401, 89, 23);
@@ -296,9 +327,6 @@ public class Participant_Screen {
 							break;
 						}
 					}
-				}
-				else{
-					System.out.println("hhh");
 				}
 			}
 		});

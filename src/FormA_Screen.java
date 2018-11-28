@@ -59,7 +59,7 @@ public class FormA_Screen {
 		});
 	}
 	
-	public static void getValues() {
+	/*public static void getValues() {
 		FormA formAttr = new FormA(Form_type.Form1);
 		if(buttonGroup.getSelection().equals(radioButton.getModel())) {
 			System.out.println("1");
@@ -76,7 +76,7 @@ public class FormA_Screen {
 				
 			}
 		}
-	}
+	}*/
 	
 	public static void set_values() {
 		if(fo==null)
@@ -321,7 +321,7 @@ public class FormA_Screen {
 				radioButton_14.setEnabled(false);
 				radioButton_15.setEnabled(false);
 				btnSave.setEnabled(false);
-				getValues();
+				//getValues();
 				if(fo!=null){
 					for(int i=0;i<Participant_Screen.part.part_forms.size();i++){
 						if(Participant_Screen.part.part_forms.get(i).ID==fo.ID){

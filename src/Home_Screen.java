@@ -90,7 +90,7 @@ public class Home_Screen {
 				LogIn_Screen.state=0;
 				Participant_Screen.main(null);
 				Participant_Screen.part=null;
-				
+				Participant_Screen.pothen_irtes=true;
 			}
 		});
 		btnNewButton.setBounds(190, 105, 152, 42);

@@ -198,6 +198,12 @@ public class Search_Screen {
 		frmSearch.getContentPane().add(btnAdd);
 		
 		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmSearch.setVisible(false);
+				Result_Screen.main(null);
+			}
+		});
 		btnSearch.setBounds(10, 344, 89, 23);
 		frmSearch.getContentPane().add(btnSearch);
 		

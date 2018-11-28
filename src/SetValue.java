@@ -93,6 +93,7 @@ public class SetValue {
 		JButton btnSet = new JButton("SET");
 		btnSet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				SetValue.frame.setVisible(false);
 				//Search_Screen.objAttributesToSearch.add(new obj_Attribute(label.getText(), Form_type f,String t, int v, boolean a, int d))
 			}
 		});

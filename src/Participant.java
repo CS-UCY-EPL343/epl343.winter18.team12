@@ -23,7 +23,6 @@ public class Participant {
 	
 	static boolean start=false;
 	
-	//todo Add list of forms
 	ArrayList<FormA> part_forms = new ArrayList<FormA>();
 	
 	
