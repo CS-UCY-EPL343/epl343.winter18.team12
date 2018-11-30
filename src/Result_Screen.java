@@ -130,6 +130,7 @@ public class Result_Screen {
 					Participant_Screen.main(null);
 					Participant_Screen.part=result_part.get(list.getSelectedIndex());
 					Participant_Screen.stars();
+					Participant_Screen.setValue();
 					Participant_Screen.pothen_irtes=false;
 				}
 				

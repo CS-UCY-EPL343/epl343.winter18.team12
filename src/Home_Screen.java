@@ -5,11 +5,14 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
+import com.microsoft.sqlserver.*;
 
 public class Home_Screen {
 	static Home_Screen window = new Home_Screen();
@@ -17,6 +20,8 @@ public class Home_Screen {
 	public static ArrayList<Participant> part_list =new ArrayList<Participant>();
 	public static List<FormA> formList = new ArrayList<FormA>();
 	public static ArrayList<Participant> all_part=new ArrayList<Participant>();
+	public static Connection dataBaseConnection =null;
+	public static boolean opening=true;
 
 	/**
 	 * Launch the application.
@@ -26,8 +31,17 @@ public class Home_Screen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+					if(opening){
+					dataBaseConnection=DatabaseConnectionFunctions.getDBConnection();
+					String uploadQuery="SELECT * FROM PARTICIPANT";
+					DatabaseConnectionFunctions.executeQueryUploadDatabase(uploadQuery);
+					for(int i=0;i<all_part.size();i++){
+						DatabaseConnectionFunctions.executeQueryUploadFormsPerParticipant(i);
+					}
+					opening=false;
+					}
 					window.frmHomeScreen.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -73,9 +87,46 @@ public class Home_Screen {
 		JButton btnNewButton_2 = new JButton("LOGOUT");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					DatabaseConnectionFunctions.sendBatchQuery("DELETE FORMA");
+					DatabaseConnectionFunctions.sendBatchQuery("DELETE PARTICIPANT");
+					for(int i=0;i<all_part.size();i++){
+						if(all_part.get(i).smoker.answer==true){
+						DatabaseConnectionFunctions.sendBatchQuery("INSERT INTO PARTICIPANT VALUES('"+all_part.get(i).ID.text+"','"+
+					all_part.get(i).Fname.text+"', '"+all_part.get(i).Sname.text+"', '"+all_part.get(i).DateOfBirth.text+"', '"+
+					1+"','"+all_part.get(i).Telephone.text+"','"+all_part.get(i).email.text+"')");
+						}else{
+							DatabaseConnectionFunctions.sendBatchQuery("INSERT INTO PARTICIPANT VALUES('"+all_part.get(i).ID.text+"','"+all_part.get(i).Fname.text+"', '"+all_part.get(i).Sname.text+"', '"+all_part.get(i).DateOfBirth.text+"', '"+0+"','"+all_part.get(i).Telephone.text+"','"+all_part.get(i).email.text+"')");
+						}
+						String insertForm="INSERT INTO FORMA VALUES('";
+						insertForm+=all_part.get(i).ID.text+"','";
+						//String insertForm="INSERT INTO PARTICIPANT VALUES('"+all_part.get(i).ID.text+"','"+all_part.get(i).part_forms.+"'";
+						for(int j=0;j<all_part.get(i).part_forms.size();j++){
+							insertForm+=all_part.get(i).part_forms.get(j).ID+"','";
+							
+					
+							
+							for(int k=0;k<all_part.get(i).part_forms.get(j).attributes.size();k++){
+								insertForm+=all_part.get(i).part_forms.get(j).attributes.get(k).value+"','";
+							}
+							
+						}
+						if(all_part.get(i).part_forms.size()>0){
+							insertForm=insertForm.substring(0, insertForm.length()-2);
+							
+						DatabaseConnectionFunctions.sendBatchQuery(insertForm+")");
+						}
+					}
+					dataBaseConnection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				window.frmHomeScreen.hide();
 				LogIn_Screen.window.frmLogin.show();
 			}
+			
 		});
 		btnNewButton_2.setBounds(403, 301, 89, 23);
 		frmHomeScreen.getContentPane().add(btnNewButton_2);

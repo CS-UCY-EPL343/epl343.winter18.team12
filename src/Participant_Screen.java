@@ -43,6 +43,12 @@ public class Participant_Screen {
 	public static Participant part;
 	public static boolean pothen_irtes=true;
 	public static JList list = new JList();
+	public static JButton btnSave;
+	public static JRadioButton rdbtnNewRadioButton;
+	public static JButton btnEditForm;
+	public static JButton btnDeleteParticipant;
+	public static JButton btnInsetNewForm;
+	public static JScrollPane scrollPane;
 	static Participant_Screen window = new Participant_Screen();
 
 	/**
@@ -59,6 +65,26 @@ public class Participant_Screen {
 				}
 			}
 		});
+	}
+	
+	public static void setValue(){
+		if (part!=null){
+			txtName.setEnabled(false);
+			txtSurname.setEnabled(false);
+			txtDate.setEnabled(false);
+			txtTelephoneno.setEnabled(false);
+			txtExampeexamplecom.setEnabled(false);
+			txtId.setEnabled(false);
+			btnSave.setEnabled(false);
+			rdbtnNewRadioButton.setEnabled(false);
+			//FORM
+			btnEditForm.setEnabled(true);
+			btnDeleteParticipant.setEnabled(true);
+			btnInsetNewForm.setEnabled(true);
+			list.setEnabled(true);
+			scrollPane.setEnabled(true);
+			comboBox1.setEnabled(true);
+		}
 	}
 	
 	public static void show(){
@@ -122,24 +148,24 @@ public class Participant_Screen {
 		frmParticipant.setBounds(100, 100, 652, 474);
 		frmParticipant.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmParticipant.getContentPane().setLayout(null);
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Smoker");
+		rdbtnNewRadioButton = new JRadioButton("Smoker");
 		rdbtnNewRadioButton.setEnabled(false);
 		rdbtnNewRadioButton.setVerticalAlignment(SwingConstants.TOP);
 		rdbtnNewRadioButton.setBounds(62, 161, 109, 23);
 		frmParticipant.getContentPane().add(rdbtnNewRadioButton);
 		
-		JButton btnEditForm = new JButton("Edit form");
+		btnEditForm = new JButton("Edit form");
 		//System.out.println("PartState:"+LogInScreen.state);
 		if(part==null)btnEditForm.setEnabled(false);
 		btnEditForm.setBounds(61, 370, 85, 21);
 		frmParticipant.getContentPane().add(btnEditForm);
 		
-		JButton btnDeleteParticipant = new JButton("Delete Participant");
+		btnDeleteParticipant = new JButton("Delete Participant");
 		if(part==null)btnDeleteParticipant.setEnabled(false);
 		btnDeleteParticipant.setBounds(459, 228, 145, 21);
 		frmParticipant.getContentPane().add(btnDeleteParticipant);
 		
-		JButton btnInsetNewForm = new JButton("Insert new Form");
+		btnInsetNewForm = new JButton("Insert new Form");
 		if(part==null)btnInsetNewForm.setEnabled(false);
 		btnInsetNewForm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,7 +198,7 @@ public class Participant_Screen {
 		label_5.setBounds(61, 50, 69, 14);
 		frmParticipant.getContentPane().add(label_5);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		if(part==null)scrollPane.setEnabled(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(39, 266, 178, 93);
@@ -214,7 +240,7 @@ public class Participant_Screen {
 		comboBox1.setBounds(39, 227, 132, 23);
 		frmParticipant.getContentPane().add(comboBox1);
 		
-		JButton btnSave = new JButton("Save");
+		btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtName.setEnabled(false);
@@ -341,6 +367,17 @@ public class Participant_Screen {
 		txtId.setBounds(369, 72, 124, 20);
 		frmParticipant.getContentPane().add(txtId);
 		txtId.setColumns(10);
+		
+		JButton button_1 = new JButton("Home <-");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmParticipant.setVisible(false);
+				initialize();
+				Home_Screen.main(null);
+			}
+		});
+		button_1.setBounds(128, 401, 89, 23);
+		frmParticipant.getContentPane().add(button_1);
 		btnEditForm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!list.isSelectionEmpty()){
