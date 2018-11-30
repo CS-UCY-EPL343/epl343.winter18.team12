@@ -13,7 +13,7 @@ public class DatabaseConnectionFunctions {
 	 * @return The connection object to be used.
 	 */
 	static Connection getDBConnection() {
-		String dbConnString = "jdbc:sqlserver://APOLLO.in.cs.ucy.ac.cy:1433;databaseName=aproxe01;user=aproxe01;password=s4utEjar7hah;";
+		String dbConnString = "jdbc:sqlserver://APOLLO.in.cs.ucy.ac.cy:1433;databaseName=aproxe01;user=aproxe01;password=*******;";
 
 		if (!dbDriverLoaded)
 			try {
