@@ -1,3 +1,8 @@
+/*
+ * SELECT ID FROM PARTICIPANT WHERE ID = @PARTICIPANTID
+ * SELECT FORMID FROM FORM WHERE ParticipantID = @PARTICIPANTID
+ * */
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,22 +27,22 @@ public class FormA_Screen {
 	static private final ButtonGroup buttonGroup_5 = new ButtonGroup();
 	static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	static private JLabel lblprDate;
-	static private JRadioButton radioButton = new JRadioButton("0");
-	static private JRadioButton radioButton_1 = new JRadioButton("1");
-	static private JRadioButton radioButton_2 = new JRadioButton("2");
-	static private JRadioButton radioButton_3 = new JRadioButton("3");
-	static private JRadioButton radioButton_4 = new JRadioButton("0");
-	static private JRadioButton radioButton_5 = new JRadioButton("1");
-	static private JRadioButton radioButton_6 = new JRadioButton("0");
-	static private JRadioButton radioButton_7 = new JRadioButton("1");
-	static private JRadioButton radioButton_8 = new JRadioButton("0");
-	static private JRadioButton radioButton_9 = new JRadioButton("1");
-	static private JRadioButton radioButton_10 = new JRadioButton("2");
-	static private JRadioButton radioButton_11 = new JRadioButton("3");
-	static private JRadioButton radioButton_12 = new JRadioButton("1");
-	static private JRadioButton radioButton_13 = new JRadioButton("0");
-	static private JRadioButton radioButton_14 = new JRadioButton("1");
-	static private JRadioButton radioButton_15 = new JRadioButton("0");
+	static private JRadioButton radioButton = new JRadioButton("Μέσα στα πρώτα 5 λεπτά");
+	static private JRadioButton radioButton_1 = new JRadioButton("6-30 λεπτά");
+	static private JRadioButton radioButton_2 = new JRadioButton("31-60 λεπτά");
+	static private JRadioButton radioButton_3 = new JRadioButton("Μετά από 60 λεπτά");
+	static private JRadioButton radioButton_4 = new JRadioButton("Ναι");
+	static private JRadioButton radioButton_5 = new JRadioButton("Όχι");
+	static private JRadioButton radioButton_6 = new JRadioButton("Το πρώτο της ημέρας");
+	static private JRadioButton radioButton_7 = new JRadioButton("Οποιοδήποτε άλλο");
+	static private JRadioButton radioButton_8 = new JRadioButton("10 ή λιγότερα");
+	static private JRadioButton radioButton_9 = new JRadioButton("11-20");
+	static private JRadioButton radioButton_10 = new JRadioButton("21-30");
+	static private JRadioButton radioButton_11 = new JRadioButton("31 ή περισσότερα");
+	static private JRadioButton radioButton_12 = new JRadioButton("Όχι");
+	static private JRadioButton radioButton_13 = new JRadioButton("Ναι");
+	static private JRadioButton radioButton_14 = new JRadioButton("Όχι");
+	static private JRadioButton radioButton_15 = new JRadioButton("Ναι");
 	
 	static FormA fo=null;
 	static FormA_Screen window = new FormA_Screen();
@@ -163,68 +168,69 @@ public class FormA_Screen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 521, 361);
+		frame.setBounds(100, 100, 900, 500);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblQuestion = new JLabel("Question1");
-		lblQuestion.setBounds(38, 70, 88, 14);
+		JLabel lblQuestion = new JLabel(FormA.formA.get(0).question);
+		lblQuestion.setBounds(38, 70, 500, 14);
+		
 		frame.getContentPane().add(lblQuestion);
 		
-		JLabel lblQuestion_1 = new JLabel("Question2");
-		lblQuestion_1.setBounds(38, 95, 71, 14);
+		JLabel lblQuestion_1 = new JLabel(FormA.formA.get(1).question);
+		lblQuestion_1.setBounds(38, 95+20, 900, 14);
 		frame.getContentPane().add(lblQuestion_1);
 		
-		JLabel lblQuestion_2 = new JLabel("Question3");
-		lblQuestion_2.setBounds(38, 120, 71, 14);
+		JLabel lblQuestion_2 = new JLabel(FormA.formA.get(2).question);
+		lblQuestion_2.setBounds(38, 120+40, 500, 14);
 		frame.getContentPane().add(lblQuestion_2);
 		
-		JLabel lblQuestion_3 = new JLabel("Question4");
-		lblQuestion_3.setBounds(38, 145, 71, 14);
+		JLabel lblQuestion_3 = new JLabel(FormA.formA.get(3).question);
+		lblQuestion_3.setBounds(38, 145+60, 500, 14);
 		frame.getContentPane().add(lblQuestion_3);
 		
-		JLabel lblQuestion_4 = new JLabel("Question5");
-		lblQuestion_4.setBounds(38, 170, 71, 14);
+		JLabel lblQuestion_4 = new JLabel(FormA.formA.get(4).question);
+		lblQuestion_4.setBounds(38, 170+80, 500, 14);
 		frame.getContentPane().add(lblQuestion_4);
 		
-		JLabel lblQuestion_5 = new JLabel("Question6");
-		lblQuestion_5.setBounds(38, 195, 71, 14);
+		JLabel lblQuestion_5 = new JLabel(FormA.formA.get(5).question);
+		lblQuestion_5.setBounds(38, 195+100, 500, 14);
 		frame.getContentPane().add(lblQuestion_5);
 		
 		radioButton.setEnabled(false);
 		radioButton.setSelected(true);
 		buttonGroup.add(radioButton);
-		radioButton.setBounds(115, 66, 41, 23);
+		radioButton.setBounds(50, 66+25, 180, 23);
 		frame.getContentPane().add(radioButton);
 		
 		radioButton_1.setEnabled(false);
 		buttonGroup.add(radioButton_1);
-		radioButton_1.setBounds(158, 66, 41, 23);
+		radioButton_1.setBounds(250, 66+25, 180, 23);
 		frame.getContentPane().add(radioButton_1);
 		
 		
 		radioButton_2.setEnabled(false);
 		buttonGroup.add(radioButton_2);
-		radioButton_2.setBounds(201, 66, 41, 23);
+		radioButton_2.setBounds(450, 66+25, 180, 23);
 		frame.getContentPane().add(radioButton_2);
 		
 		
 		radioButton_3.setEnabled(false);
 		buttonGroup.add(radioButton_3);
-		radioButton_3.setBounds(244, 66, 41, 23);
+		radioButton_3.setBounds(650, 66+25, 180, 23);
 		frame.getContentPane().add(radioButton_3);
 		
 		
 		radioButton_4.setEnabled(false);
 		radioButton_4.setSelected(true);
 		buttonGroup_1.add(radioButton_4);
-		radioButton_4.setBounds(115, 91, 41, 23);
+		radioButton_4.setBounds(50, 91+45, 180, 23);
 		frame.getContentPane().add(radioButton_4);
 		
 		
 		radioButton_5.setEnabled(false);
 		buttonGroup_1.add(radioButton_5);
-		radioButton_5.setBounds(158, 91, 41, 23);
+		radioButton_5.setBounds(250, 91+45, 180, 23);
 		frame.getContentPane().add(radioButton_5);
 		
 		JLabel lblForma = new JLabel("FormA");
@@ -236,67 +242,67 @@ public class FormA_Screen {
 		radioButton_6.setEnabled(false);
 		radioButton_6.setSelected(true);
 		buttonGroup_2.add(radioButton_6);
-		radioButton_6.setBounds(115, 116, 41, 23);
+		radioButton_6.setBounds(50, 116+65, 180, 23);
 		frame.getContentPane().add(radioButton_6);
 		
 		
 		radioButton_7.setEnabled(false);
 		buttonGroup_2.add(radioButton_7);
-		radioButton_7.setBounds(158, 116, 41, 23);
+		radioButton_7.setBounds(250, 116+65, 180, 23);
 		frame.getContentPane().add(radioButton_7);
 		
 		
 		radioButton_8.setEnabled(false);
 		radioButton_8.setSelected(true);
 		buttonGroup_3.add(radioButton_8);
-		radioButton_8.setBounds(115, 141, 41, 23);
+		radioButton_8.setBounds(50, 141+85, 180, 23);
 		frame.getContentPane().add(radioButton_8);
 		
 		
 		radioButton_9.setEnabled(false);
 		buttonGroup_3.add(radioButton_9);
-		radioButton_9.setBounds(158, 141, 41, 23);
+		radioButton_9.setBounds(250, 141+85, 180, 23);
 		frame.getContentPane().add(radioButton_9);
 		
 		radioButton_10.setEnabled(false);
 		buttonGroup_3.add(radioButton_10);
-		radioButton_10.setBounds(201, 141, 41, 23);
+		radioButton_10.setBounds(450, 141+85, 180, 23);
 		frame.getContentPane().add(radioButton_10);
 		
 		
 		radioButton_11.setEnabled(false);
 		buttonGroup_3.add(radioButton_11);
-		radioButton_11.setBounds(244, 141, 41, 23);
+		radioButton_11.setBounds(650, 141+85, 180, 23);
 		frame.getContentPane().add(radioButton_11);
 		
 		
 		radioButton_12.setEnabled(false);
 		buttonGroup_4.add(radioButton_12);
-		radioButton_12.setBounds(158, 166, 41, 23);
+		radioButton_12.setBounds(250, 166+105, 180, 23);
 		frame.getContentPane().add(radioButton_12);
 		
 		
 		radioButton_13.setEnabled(false);
 		radioButton_13.setSelected(true);
 		buttonGroup_4.add(radioButton_13);
-		radioButton_13.setBounds(115, 166, 41, 23);
+		radioButton_13.setBounds(50, 166+105, 180, 23);
 		frame.getContentPane().add(radioButton_13);
 		
 		
 		radioButton_14.setEnabled(false);
 		buttonGroup_5.add(radioButton_14);
-		radioButton_14.setBounds(158, 191, 41, 23);
+		radioButton_14.setBounds(250, 191+130, 180, 23);
 		frame.getContentPane().add(radioButton_14);
 		
 		
 		radioButton_15.setEnabled(false);
 		radioButton_15.setSelected(true);
 		buttonGroup_5.add(radioButton_15);
-		radioButton_15.setBounds(115, 191, 41, 23);
+		radioButton_15.setBounds(50, 191+130, 180, 23);
 		frame.getContentPane().add(radioButton_15);
 		LocalDate localDate = LocalDate.now();
 		lblprDate = new JLabel(dtf.format(localDate));
-		lblprDate.setBounds(393, 23, 88, 14);
+		lblprDate.setBounds(800, 23, 88, 14);
 		frame.getContentPane().add(lblprDate);
 	
 		
@@ -406,7 +412,7 @@ public class FormA_Screen {
 				Participant_Screen.show();
 			}
 		});
-		btnSave.setBounds(158, 254, 89, 23);
+		btnSave.setBounds(158, 191+130+20+30, 89, 23);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnModify = new JButton("Modify");
@@ -432,11 +438,11 @@ public class FormA_Screen {
 			
 			}
 		});
-		btnModify.setBounds(38, 254, 89, 23);
+		btnModify.setBounds(38, 191+130+20+30, 89, 23);
 		frame.getContentPane().add(btnModify);
 		
 		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(343, 23, 41, 14);
+		lblDate.setBounds(750, 23, 41, 14);
 		frame.getContentPane().add(lblDate);
 	}
 }
